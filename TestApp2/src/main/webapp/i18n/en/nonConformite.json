@@ -1,0 +1,31 @@
+{
+  "newbetterflyApp": {
+    "nonConformite": {
+      "home": {
+        "title": "Non Conformites",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Non Conformite",
+        "createOrEditLabel": "Create or edit a Non Conformite",
+        "search": "Search for Non Conformite",
+        "notFound": "No Non Conformites found"
+      },
+      "created": "A new Non Conformite is created with identifier {{ param }}",
+      "updated": "A Non Conformite is updated with identifier {{ param }}",
+      "deleted": "A Non Conformite is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Non Conformite {{ id }}?"
+      },
+      "detail": {
+        "title": "Non Conformite"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "causesPotentielles": "Causes Potentielles",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

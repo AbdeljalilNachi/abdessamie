@@ -1,0 +1,37 @@
+{
+  "name": "ResultatIndicateur",
+  "fields": [
+    {
+      "fieldName": "mois",
+      "fieldType": "Mois",
+      "fieldValues": "JAN,FEV,MAR,AVR,MAI,JUN,JUL,AUT,SEP,OCT,NOV,DEC"
+    },
+    {
+      "fieldName": "cible",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "resultat",
+      "fieldType": "Float"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "resultIndicateurs",
+      "otherEntityRelationshipName": "resultats",
+      "relationshipName": "resultIndicateurs"
+    }
+  ],
+  "entityTableName": "resultat_indicateur",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121238"
+}

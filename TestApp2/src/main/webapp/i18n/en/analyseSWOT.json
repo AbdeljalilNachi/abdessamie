@@ -1,0 +1,32 @@
+{
+  "newbetterflyApp": {
+    "analyseSWOT": {
+      "home": {
+        "title": "Analyse SWOTS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Analyse SWOT",
+        "createOrEditLabel": "Create or edit a Analyse SWOT",
+        "search": "Search for Analyse SWOT",
+        "notFound": "No Analyse SWOTS found"
+      },
+      "created": "A new Analyse SWOT is created with identifier {{ param }}",
+      "updated": "A Analyse SWOT is updated with identifier {{ param }}",
+      "deleted": "A Analyse SWOT is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Analyse SWOT {{ id }}?"
+      },
+      "detail": {
+        "title": "Analyse SWOT"
+      },
+      "id": "ID",
+      "dateIdentification": "Date Identification",
+      "description": "Description",
+      "pilote": "Pilote",
+      "type": "Type",
+      "bu": "Bu",
+      "commentaire": "Commentaire",
+      "afficher": "Afficher",
+      "processus": "Processus"
+    }
+  }
+}

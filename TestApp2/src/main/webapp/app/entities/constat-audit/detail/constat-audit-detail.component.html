@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="constatAudit">
+      <h2 data-cy="constatAuditDetailsHeading"><span jhiTranslate="newbetterflyApp.constatAudit.detail.title">Constat Audit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ constatAudit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.TypeConstatAudit.' + constatAudit.type }}">{{ constatAudit.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.constat">Constat</span></dt>
+        <dd>
+          <span>{{ constatAudit.constat }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.origine">Origine</span></dt>
+        <dd>
+          <span>{{ constatAudit.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.action">Action</span></dt>
+        <dd>
+          <div *ngIf="constatAudit.action">
+            <a [routerLink]="['/action', constatAudit.action?.id, 'view']">{{ constatAudit.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ constatAudit.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="constatAudit.processus">
+            <a [routerLink]="['/processus-smi', constatAudit.processus?.id, 'view']">{{ constatAudit.processus?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.constatAudit.audit">Audit</span></dt>
+        <dd>
+          <div *ngIf="constatAudit.audit">
+            <a [routerLink]="['/audit', constatAudit.audit?.id, 'view']">{{ constatAudit.audit?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/constat-audit', constatAudit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

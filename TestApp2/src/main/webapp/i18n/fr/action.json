@@ -1,0 +1,34 @@
+{
+  "newbetterflyApp": {
+    "action": {
+      "home": {
+        "title": "Actions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Action",
+        "createOrEditLabel": "Créer ou éditer un Action",
+        "search": "Recherche pour Action",
+        "notFound": "Aucun Action trouvé"
+      },
+      "created": "Un nouveau Action a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Action avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Action avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Action {{ id }} ?"
+      },
+      "detail": {
+        "title": "Action"
+      },
+      "id": "ID",
+      "datePlanification": "Date Planification",
+      "action": "Action",
+      "type": "Type",
+      "delai": "Delai",
+      "avancement": "Avancement",
+      "realisee": "Realisee",
+      "critereResultat": "Critere Resultat",
+      "ressourcesNecessaires": "Ressources Necessaires",
+      "statut": "Statut",
+      "efficace": "Efficace"
+    }
+  }
+}

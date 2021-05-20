@@ -1,0 +1,31 @@
+{
+  "newbetterflyApp": {
+    "objectif": {
+      "home": {
+        "title": "Objectifs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Objectif",
+        "createOrEditLabel": "Créer ou éditer un Objectif",
+        "search": "Recherche pour Objectif",
+        "notFound": "Aucun Objectif trouvé"
+      },
+      "created": "Un nouveau Objectif a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Objectif avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Objectif avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Objectif {{ id }} ?"
+      },
+      "detail": {
+        "title": "Objectif"
+      },
+      "id": "ID",
+      "axedelapolitiqueqse": "Axedelapolitiqueqse",
+      "objectifqse": "Objectifqse",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus",
+      "indicateur": "Indicateur"
+    }
+  }
+}

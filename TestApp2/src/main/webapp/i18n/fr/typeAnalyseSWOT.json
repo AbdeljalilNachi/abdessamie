@@ -1,0 +1,11 @@
+{
+  "newbetterflyApp": {
+    "TypeAnalyseSWOT": {
+      "null": "",
+      "FORCE": "FORCE",
+      "FAIBLESSE": "FAIBLESSE",
+      "MENACE": "MENACE",
+      "OPPORTUNITE": "OPPORTUNITE"
+    }
+  }
+}

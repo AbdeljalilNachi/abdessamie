@@ -1,0 +1,46 @@
+{
+  "name": "PolitiqueQSE",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "axePolitiqueQSE",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "objectifQSE",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vigueur",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "politiqueQSE",
+      "relationshipName": "processus"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "indicateurSMI",
+      "otherEntityRelationshipName": "politiqueQSE",
+      "relationshipName": "indicateur"
+    }
+  ],
+  "entityTableName": "politique_qse",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121235"
+}

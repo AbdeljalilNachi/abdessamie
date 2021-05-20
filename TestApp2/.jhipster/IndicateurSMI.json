@@ -1,0 +1,66 @@
+{
+  "name": "IndicateurSMI",
+  "fields": [
+    {
+      "fieldName": "dateIdentification",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "indicateur",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "formuleCalcul",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cible",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "seuilTolerance",
+      "fieldType": "Float"
+    },
+    {
+      "fieldName": "unite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "periodicite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "observations",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vigueur",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "indicateurSMI",
+      "relationshipName": "responsableDeCalcul"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "indicateurSMI",
+      "relationshipName": "processus"
+    }
+  ],
+  "entityTableName": "indicateur_smi",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121230"
+}

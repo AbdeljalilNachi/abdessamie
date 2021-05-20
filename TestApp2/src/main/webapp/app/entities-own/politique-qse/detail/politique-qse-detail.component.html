@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="politiqueQSE">
+      <h2 data-cy="politiqueQSEDetailsHeading"><span jhiTranslate="newbetterflyApp.politiqueQSE.detail.title">Politique QSE</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ politiqueQSE.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.politiqueQSE.date">Date</span></dt>
+        <dd>
+          <span>{{ politiqueQSE.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.politiqueQSE.axePolitiqueQSE">Axe Politique QSE</span></dt>
+        <dd>
+          <span>{{ politiqueQSE.axePolitiqueQSE }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.politiqueQSE.objectifQSE">Objectif QSE</span></dt>
+        <dd>
+          <span>{{ politiqueQSE.objectifQSE }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.politiqueQSE.vigueur">Vigueur</span></dt>
+        <dd>
+          <span>{{ politiqueQSE.vigueur }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.politiqueQSE.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="politiqueQSE.processus">
+            <a [routerLink]="['/processus-smi', politiqueQSE.processus?.id, 'view']">{{ politiqueQSE.processus?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.politiqueQSE.indicateur">Indicateur</span></dt>
+        <dd>
+          <div *ngIf="politiqueQSE.indicateur">
+            <a [routerLink]="['/indicateur-smi', politiqueQSE.indicateur?.id, 'view']">{{ politiqueQSE.indicateur?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/politique-qse', politiqueQSE.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

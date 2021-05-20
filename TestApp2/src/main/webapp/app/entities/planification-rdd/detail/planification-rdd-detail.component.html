@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="planificationRDD">
+      <h2 data-cy="planificationRDDDetailsHeading">
+        <span jhiTranslate="newbetterflyApp.planificationRDD.detail.title">Planification RDD</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ planificationRDD.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.planificationRDD.nRdd">N Rdd</span></dt>
+        <dd>
+          <span>{{ planificationRDD.nRdd }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.planificationRDD.date">Date</span></dt>
+        <dd>
+          <span>{{ planificationRDD.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.planificationRDD.realisee">Realisee</span></dt>
+        <dd>
+          <span>{{ planificationRDD.realisee }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.planificationRDD.presentation">Presentation</span></dt>
+        <dd>
+          <div *ngIf="planificationRDD.presentation">
+            <a (click)="openFile(planificationRDD.presentation, planificationRDD.presentationContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ planificationRDD.presentationContentType }}, {{ byteSize(planificationRDD.presentation) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.planificationRDD.standard">Standard</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Standard.' + planificationRDD.standard }}">{{ planificationRDD.standard }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/planification-rdd', planificationRDD.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

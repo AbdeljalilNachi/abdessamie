@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity IndicateurSMI.
+    -->
+    <changeSet id="20210403121230-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="responsable_de_calcul_id"
+                                 baseTableName="indicateur_smi"
+                                 constraintName="fk_indicateur_smi__responsable_de_calcul_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="processus_id"
+                                 baseTableName="indicateur_smi"
+                                 constraintName="fk_indicateur_smi__processus_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processus_smi"/>
+    </changeSet>
+</databaseChangeLog>

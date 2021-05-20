@@ -1,0 +1,88 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="risque">
+      <h2 data-cy="risqueDetailsHeading"><span jhiTranslate="newbetterflyApp.risque.detail.title">Risque</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ risque.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.dateIdentification">Date Identification</span></dt>
+        <dd>
+          <span>{{ risque.dateIdentification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.description">Description</span></dt>
+        <dd>
+          <span>{{ risque.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.causePotentielle">Cause Potentielle</span></dt>
+        <dd>
+          <span>{{ risque.causePotentielle }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.effetPotentiel">Effet Potentiel</span></dt>
+        <dd>
+          <span>{{ risque.effetPotentiel }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.TypeRisque.' + risque.type }}">{{ risque.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.gravite">Gravite</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + risque.gravite }}">{{ risque.gravite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.probabilite">Probabilite</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + risque.probabilite }}">{{ risque.probabilite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.criticite">Criticite</span></dt>
+        <dd>
+          <span>{{ risque.criticite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.traitement">Traitement</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Traitement.' + risque.traitement }}">{{ risque.traitement }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.commentaire">Commentaire</span></dt>
+        <dd>
+          <span>{{ risque.commentaire }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.origine">Origine</span></dt>
+        <dd>
+          <span>{{ risque.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.action">Action</span></dt>
+        <dd>
+          <div *ngIf="risque.action">
+            <a [routerLink]="['/action', risque.action?.id, 'view']">{{ risque.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ risque.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.risque.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="risque.processus">
+            <a [routerLink]="['/processus-smi', risque.processus?.id, 'view']">{{ risque.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/risque', risque.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

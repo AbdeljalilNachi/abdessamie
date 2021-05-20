@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity ConstatAudit.
+    -->
+    <changeSet id="20210403121228-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="action_id"
+                                 baseTableName="constat_audit"
+                                 constraintName="fk_constat_audit__action_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="action"/>
+
+        <addForeignKeyConstraint baseColumnNames="delegue_id"
+                                 baseTableName="constat_audit"
+                                 constraintName="fk_constat_audit__delegue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="processus_id"
+                                 baseTableName="constat_audit"
+                                 constraintName="fk_constat_audit__processus_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processus_smi"/>
+
+        <addForeignKeyConstraint baseColumnNames="audit_id"
+                                 baseTableName="constat_audit"
+                                 constraintName="fk_constat_audit__audit_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="audit"/>
+    </changeSet>
+</databaseChangeLog>

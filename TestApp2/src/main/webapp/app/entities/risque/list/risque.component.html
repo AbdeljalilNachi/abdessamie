@@ -1,0 +1,173 @@
+<div>
+  <h2 id="page-heading" data-cy="RisqueHeading">
+    <span jhiTranslate="newbetterflyApp.risque.home.title">Risques</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="newbetterflyApp.risque.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-risque"
+        [routerLink]="['/risque/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="newbetterflyApp.risque.home.createLabel"> Create a new Risque </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'newbetterflyApp.risque.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="risques?.length === 0">
+    <span jhiTranslate="newbetterflyApp.risque.home.notFound">No risques found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="risques && risques.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="dateIdentification">
+            <span jhiTranslate="newbetterflyApp.risque.dateIdentification">Date Identification</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="description">
+            <span jhiTranslate="newbetterflyApp.risque.description">Description</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="causePotentielle">
+            <span jhiTranslate="newbetterflyApp.risque.causePotentielle">Cause Potentielle</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="effetPotentiel">
+            <span jhiTranslate="newbetterflyApp.risque.effetPotentiel">Effet Potentiel</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="type"><span jhiTranslate="newbetterflyApp.risque.type">Type</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="gravite">
+            <span jhiTranslate="newbetterflyApp.risque.gravite">Gravite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="probabilite">
+            <span jhiTranslate="newbetterflyApp.risque.probabilite">Probabilite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="criticite">
+            <span jhiTranslate="newbetterflyApp.risque.criticite">Criticite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="traitement">
+            <span jhiTranslate="newbetterflyApp.risque.traitement">Traitement</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="commentaire">
+            <span jhiTranslate="newbetterflyApp.risque.commentaire">Commentaire</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="origine">
+            <span jhiTranslate="newbetterflyApp.risque.origine">Origine</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="action.id">
+            <span jhiTranslate="newbetterflyApp.risque.action">Action</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="delegue.id">
+            <span jhiTranslate="newbetterflyApp.risque.delegue">Delegue</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="processus.id">
+            <span jhiTranslate="newbetterflyApp.risque.processus">Processus</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let risque of risques; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/risque', risque.id, 'view']">{{ risque.id }}</a>
+          </td>
+          <td>{{ risque.dateIdentification | formatMediumDate }}</td>
+          <td>{{ risque.description }}</td>
+          <td>{{ risque.causePotentielle }}</td>
+          <td>{{ risque.effetPotentiel }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.TypeRisque.' + risque.type }}">{{ risque.type }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + risque.gravite }}">{{ risque.gravite }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + risque.probabilite }}">{{ risque.probabilite }}</td>
+          <td>{{ risque.criticite }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.Traitement.' + risque.traitement }}">{{ risque.traitement }}</td>
+          <td>{{ risque.commentaire }}</td>
+          <td>{{ risque.origine }}</td>
+          <td>
+            <div *ngIf="risque.action">
+              <a [routerLink]="['/action', risque.action?.id, 'view']">{{ risque.action?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ risque.delegue?.id }}
+          </td>
+          <td>
+            <div *ngIf="risque.processus">
+              <a [routerLink]="['/processus-smi', risque.processus?.id, 'view']">{{ risque.processus?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/risque', risque.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/risque', risque.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(risque)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="risques && risques.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

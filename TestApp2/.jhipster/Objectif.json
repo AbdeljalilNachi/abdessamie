@@ -1,0 +1,54 @@
+{
+  "name": "Objectif",
+  "fields": [
+    {
+      "fieldName": "axedelapolitiqueqse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "objectifqse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "origine",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "action",
+      "otherEntityRelationshipName": "objectif",
+      "relationshipName": "action"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "objectif",
+      "relationshipName": "delegue"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "objectif",
+      "relationshipName": "processus"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "indicateurSMI",
+      "otherEntityRelationshipName": "objectif",
+      "relationshipName": "indicateur"
+    }
+  ],
+  "entityTableName": "objectif",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121232"
+}

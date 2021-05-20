@@ -1,0 +1,120 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-politique-qse-heading"
+        data-cy="PolitiqueQSECreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.politiqueQSE.home.createOrEditLabel"
+      >
+        Create or edit a Politique QSE
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.politiqueQSE.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.politiqueQSE.axePolitiqueQSE" for="field_axePolitiqueQSE"
+            >Axe Politique QSE</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="axePolitiqueQSE"
+            id="field_axePolitiqueQSE"
+            data-cy="axePolitiqueQSE"
+            formControlName="axePolitiqueQSE"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.politiqueQSE.objectifQSE" for="field_objectifQSE"
+            >Objectif QSE</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="objectifQSE"
+            id="field_objectifQSE"
+            data-cy="objectifQSE"
+            formControlName="objectifQSE"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.politiqueQSE.vigueur" for="field_vigueur">Vigueur</label>
+          <input type="checkbox" class="form-check" name="vigueur" id="field_vigueur" data-cy="vigueur" formControlName="vigueur" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.politiqueQSE.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.politiqueQSE.indicateur" for="field_indicateur">Indicateur</label>
+          <select class="form-control" id="field_indicateur" data-cy="indicateur" name="indicateur" formControlName="indicateur">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                indicateurSMIOption.id === editForm.get('indicateur')!.value?.id ? editForm.get('indicateur')!.value : indicateurSMIOption
+              "
+              *ngFor="let indicateurSMIOption of indicateurSMISSharedCollection; trackBy: trackIndicateurSMIById"
+            >
+              {{ indicateurSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

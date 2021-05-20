@@ -1,0 +1,184 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-indicateur-smi-heading"
+        data-cy="IndicateurSMICreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.indicateurSMI.home.createOrEditLabel"
+      >
+        Create or edit a Indicateur SMI
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.dateIdentification" for="field_dateIdentification"
+            >Date Identification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateIdentification"
+              data-cy="dateIdentification"
+              type="text"
+              class="form-control"
+              name="dateIdentification"
+              ngbDatepicker
+              #dateIdentificationDp="ngbDatepicker"
+              formControlName="dateIdentification"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateIdentificationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.indicateur" for="field_indicateur"
+            >Indicateur</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="indicateur"
+            id="field_indicateur"
+            data-cy="indicateur"
+            formControlName="indicateur"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.formuleCalcul" for="field_formuleCalcul"
+            >Formule Calcul</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="formuleCalcul"
+            id="field_formuleCalcul"
+            data-cy="formuleCalcul"
+            formControlName="formuleCalcul"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.cible" for="field_cible">Cible</label>
+          <input type="number" class="form-control" name="cible" id="field_cible" data-cy="cible" formControlName="cible" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.seuilTolerance" for="field_seuilTolerance"
+            >Seuil Tolerance</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="seuilTolerance"
+            id="field_seuilTolerance"
+            data-cy="seuilTolerance"
+            formControlName="seuilTolerance"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.unite" for="field_unite">Unite</label>
+          <input type="text" class="form-control" name="unite" id="field_unite" data-cy="unite" formControlName="unite" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.periodicite" for="field_periodicite"
+            >Periodicite</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="periodicite"
+            id="field_periodicite"
+            data-cy="periodicite"
+            formControlName="periodicite"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.observations" for="field_observations"
+            >Observations</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="observations"
+            id="field_observations"
+            data-cy="observations"
+            formControlName="observations"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.vigueur" for="field_vigueur">Vigueur</label>
+          <input type="checkbox" class="form-check" name="vigueur" id="field_vigueur" data-cy="vigueur" formControlName="vigueur" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.responsableDeCalcul" for="field_responsableDeCalcul"
+            >Responsable De Calcul</label
+          >
+          <select
+            class="form-control"
+            id="field_responsableDeCalcul"
+            data-cy="responsableDeCalcul"
+            name="responsableDeCalcul"
+            formControlName="responsableDeCalcul"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                userOption.id === editForm.get('responsableDeCalcul')!.value?.id ? editForm.get('responsableDeCalcul')!.value : userOption
+              "
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.indicateurSMI.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

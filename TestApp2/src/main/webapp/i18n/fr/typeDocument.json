@@ -1,0 +1,13 @@
+{
+  "newbetterflyApp": {
+    "TypeDocument": {
+      "null": "",
+      "PROECDURE": "PROECDURE",
+      "INSTRUCTION": "INSTRUCTION",
+      "ENREGISTREMENT": "ENREGISTREMENT",
+      "MANUEL": "MANUEL",
+      "POLITIQUE": "POLITIQUE",
+      "AUTRES": "AUTRES"
+    }
+  }
+}

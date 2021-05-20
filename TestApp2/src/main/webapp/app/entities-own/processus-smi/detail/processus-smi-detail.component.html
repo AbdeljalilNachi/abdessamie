@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="processusSMI">
+      <h2 data-cy="processusSMIDetailsHeading"><span jhiTranslate="newbetterflyApp.processusSMI.detail.title">Processus SMI</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ processusSMI.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.processus">Processus</span></dt>
+        <dd>
+          <span>{{ processusSMI.processus }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.date">Date</span></dt>
+        <dd>
+          <span>{{ processusSMI.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.version">Version</span></dt>
+        <dd>
+          <span>{{ processusSMI.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.finalite">Finalite</span></dt>
+        <dd>
+          <span>{{ processusSMI.finalite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.ficheProcessus">Fiche Processus</span></dt>
+        <dd>
+          <div *ngIf="processusSMI.ficheProcessus">
+            <a (click)="openFile(processusSMI.ficheProcessus, processusSMI.ficheProcessusContentType)" jhiTranslate="entity.action.open"
+              >open</a
+            >
+            {{ processusSMI.ficheProcessusContentType }}, {{ byteSize(processusSMI.ficheProcessus) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.TypeProcessus.' + processusSMI.type }}">{{ processusSMI.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.vigueur">Vigueur</span></dt>
+        <dd>
+          <span>{{ processusSMI.vigueur }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.pilote">Pilote</span></dt>
+        <dd>
+          <span>{{ processusSMI.pilote?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.processusSMI.audit">Audit</span></dt>
+        <dd>
+          <div *ngIf="processusSMI.audit">
+            <a [routerLink]="['/audit', processusSMI.audit?.id, 'view']">{{ processusSMI.audit?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/processus-smi', processusSMI.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity NonConformite.
+    -->
+    <changeSet id="20210403121231-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="action_id"
+                                 baseTableName="non_conformite"
+                                 constraintName="fk_non_conformite__action_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="action"/>
+
+        <addForeignKeyConstraint baseColumnNames="delegue_id"
+                                 baseTableName="non_conformite"
+                                 constraintName="fk_non_conformite__delegue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="processus_id"
+                                 baseTableName="non_conformite"
+                                 constraintName="fk_non_conformite__processus_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processus_smi"/>
+    </changeSet>
+</databaseChangeLog>

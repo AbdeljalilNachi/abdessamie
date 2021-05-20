@@ -1,0 +1,30 @@
+{
+  "newbetterflyApp": {
+    "besoinPI": {
+      "home": {
+        "title": "BesoinPIS",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Besoin PI",
+        "createOrEditLabel": "Créer ou éditer un Besoin PI",
+        "search": "Recherche pour Besoin PI",
+        "notFound": "Aucun Besoin PI trouvé"
+      },
+      "created": "Un nouveau Besoin PI a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Besoin PI avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Besoin PI avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Besoin PI {{ id }} ?"
+      },
+      "detail": {
+        "title": "Besoin PI"
+      },
+      "id": "ID",
+      "dateIdentification": "Date Identification",
+      "piPertinentes": "Pi Pertinentes",
+      "pertinente": "Pertinente",
+      "priseEnCharge": "Prise En Charge",
+      "afficher": "Afficher",
+      "processus": "Processus"
+    }
+  }
+}

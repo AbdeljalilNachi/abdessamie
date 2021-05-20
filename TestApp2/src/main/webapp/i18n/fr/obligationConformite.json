@@ -1,0 +1,37 @@
+{
+  "newbetterflyApp": {
+    "obligationConformite": {
+      "home": {
+        "title": "ObligationConformites",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Obligation Conformite",
+        "createOrEditLabel": "Créer ou éditer un Obligation Conformite",
+        "search": "Recherche pour Obligation Conformite",
+        "notFound": "Aucun Obligation Conformite trouvé"
+      },
+      "created": "Un nouveau Obligation Conformite a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Obligation Conformite avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Obligation Conformite avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Obligation Conformite {{ id }} ?"
+      },
+      "detail": {
+        "title": "Obligation Conformite"
+      },
+      "id": "ID",
+      "date": "Date",
+      "rubrique": "Rubrique",
+      "reference": "Reference",
+      "num": "Num",
+      "exigence": "Exigence",
+      "applicable": "Applicable",
+      "conforme": "Conforme",
+      "statut": "Statut",
+      "observation": "Observation",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

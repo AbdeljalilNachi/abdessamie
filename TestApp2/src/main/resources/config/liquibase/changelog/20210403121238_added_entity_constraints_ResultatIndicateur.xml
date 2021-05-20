@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity ResultatIndicateur.
+    -->
+    <changeSet id="20210403121238-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="result_indicateurs_id"
+                                 baseTableName="resultat_indicateur"
+                                 constraintName="fk_resultat_indicateur__result_indicateurs_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="result_indicateurs"/>
+    </changeSet>
+</databaseChangeLog>

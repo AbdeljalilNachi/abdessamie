@@ -1,0 +1,54 @@
+{
+  "name": "ProcessusSMI",
+  "fields": [
+    {
+      "fieldName": "processus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "finalite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ficheProcessus",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TypeProcessus",
+      "fieldValues": "MANAGEMENT,REALISATION,SUPPORT"
+    },
+    {
+      "fieldName": "vigueur",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "processusSMI",
+      "relationshipName": "pilote"
+    }
+  ],
+  "entityTableName": "processus_smi",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121236"
+}

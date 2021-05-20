@@ -1,0 +1,41 @@
+{
+  "newbetterflyApp": {
+    "analyseEnvirommentale": {
+      "home": {
+        "title": "AnalyseEnvirommentales",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Analyse Envirommentale",
+        "createOrEditLabel": "Créer ou éditer un Analyse Envirommentale",
+        "search": "Recherche pour Analyse Envirommentale",
+        "notFound": "Aucun Analyse Envirommentale trouvé"
+      },
+      "created": "Un nouveau Analyse Envirommentale a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Analyse Envirommentale avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Analyse Envirommentale avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Analyse Envirommentale {{ id }} ?"
+      },
+      "detail": {
+        "title": "Analyse Envirommentale"
+      },
+      "id": "ID",
+      "date": "Date",
+      "businessUnit": "Business Unit",
+      "activite": "Activite",
+      "aspectEnvironnemental": "Aspect Environnemental",
+      "impactEnvironnemental": "Impact Environnemental",
+      "competencesRequises": "Competences Requises",
+      "situation": "Situation",
+      "frequence": "Frequence",
+      "sensibiliteMilieu": "Sensibilite Milieu",
+      "coefficientMaitrise": "Coefficient Maitrise",
+      "gravite": "Gravite",
+      "criticite": "Criticite",
+      "maitriseExistante": "Maitrise Existante",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="nonConformite">
+      <h2 data-cy="nonConformiteDetailsHeading"><span jhiTranslate="newbetterflyApp.nonConformite.detail.title">Non Conformite</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ nonConformite.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.date">Date</span></dt>
+        <dd>
+          <span>{{ nonConformite.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.description">Description</span></dt>
+        <dd>
+          <span>{{ nonConformite.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.causesPotentielles">Causes Potentielles</span></dt>
+        <dd>
+          <span>{{ nonConformite.causesPotentielles }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.origine">Origine</span></dt>
+        <dd>
+          <span>{{ nonConformite.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.action">Action</span></dt>
+        <dd>
+          <div *ngIf="nonConformite.action">
+            <a [routerLink]="['/action', nonConformite.action?.id, 'view']">{{ nonConformite.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ nonConformite.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.nonConformite.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="nonConformite.processus">
+            <a [routerLink]="['/processus-smi', nonConformite.processus?.id, 'view']">{{ nonConformite.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/non-conformite', nonConformite.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

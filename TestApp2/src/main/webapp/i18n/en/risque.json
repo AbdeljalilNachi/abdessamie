@@ -1,0 +1,38 @@
+{
+  "newbetterflyApp": {
+    "risque": {
+      "home": {
+        "title": "Risques",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Risque",
+        "createOrEditLabel": "Create or edit a Risque",
+        "search": "Search for Risque",
+        "notFound": "No Risques found"
+      },
+      "created": "A new Risque is created with identifier {{ param }}",
+      "updated": "A Risque is updated with identifier {{ param }}",
+      "deleted": "A Risque is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Risque {{ id }}?"
+      },
+      "detail": {
+        "title": "Risque"
+      },
+      "id": "ID",
+      "dateIdentification": "Date Identification",
+      "description": "Description",
+      "causePotentielle": "Cause Potentielle",
+      "effetPotentiel": "Effet Potentiel",
+      "type": "Type",
+      "gravite": "Gravite",
+      "probabilite": "Probabilite",
+      "criticite": "Criticite",
+      "traitement": "Traitement",
+      "commentaire": "Commentaire",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

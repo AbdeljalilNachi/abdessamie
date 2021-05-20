@@ -1,0 +1,30 @@
+{
+  "newbetterflyApp": {
+    "politiqueQSE": {
+      "home": {
+        "title": "Politique QSES",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Politique QSE",
+        "createOrEditLabel": "Create or edit a Politique QSE",
+        "search": "Search for Politique QSE",
+        "notFound": "No Politique QSES found"
+      },
+      "created": "A new Politique QSE is created with identifier {{ param }}",
+      "updated": "A Politique QSE is updated with identifier {{ param }}",
+      "deleted": "A Politique QSE is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Politique QSE {{ id }}?"
+      },
+      "detail": {
+        "title": "Politique QSE"
+      },
+      "id": "ID",
+      "date": "Date",
+      "axePolitiqueQSE": "Axe Politique QSE",
+      "objectifQSE": "Objectif QSE",
+      "vigueur": "Vigueur",
+      "processus": "Processus",
+      "indicateur": "Indicateur"
+    }
+  }
+}

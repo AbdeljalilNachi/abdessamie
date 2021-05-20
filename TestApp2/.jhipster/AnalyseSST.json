@@ -1,0 +1,97 @@
+{
+  "name": "AnalyseSST",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "buisnessUnit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "uniteTravail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "danger",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "risque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "competence",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "situation",
+      "fieldType": "Situation",
+      "fieldValues": "Normale,Anormale,Urgence"
+    },
+    {
+      "fieldName": "frequence",
+      "fieldType": "EnumFive",
+      "fieldValues": "ONE,TWO,THREE,FOUR,FIVE"
+    },
+    {
+      "fieldName": "dureeExposition",
+      "fieldType": "EnumFive",
+      "fieldValues": "ONE,TWO,THREE,FOUR,FIVE"
+    },
+    {
+      "fieldName": "coefficientMaitrise",
+      "fieldType": "EnumFive",
+      "fieldValues": "ONE,TWO,THREE,FOUR,FIVE"
+    },
+    {
+      "fieldName": "gravite",
+      "fieldType": "EnumFive",
+      "fieldValues": "ONE,TWO,THREE,FOUR,FIVE"
+    },
+    {
+      "fieldName": "criticite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "maitriseExistante",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "origine",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "action",
+      "otherEntityRelationshipName": "analyseSST",
+      "relationshipName": "action"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "analyseSST",
+      "relationshipName": "delegue"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "analyseSST",
+      "relationshipName": "processus"
+    }
+  ],
+  "entityTableName": "analyse_sst",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121223"
+}

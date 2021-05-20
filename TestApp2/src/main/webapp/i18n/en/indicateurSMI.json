@@ -1,0 +1,35 @@
+{
+  "newbetterflyApp": {
+    "indicateurSMI": {
+      "home": {
+        "title": "Indicateur SMIS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Indicateur SMI",
+        "createOrEditLabel": "Create or edit a Indicateur SMI",
+        "search": "Search for Indicateur SMI",
+        "notFound": "No Indicateur SMIS found"
+      },
+      "created": "A new Indicateur SMI is created with identifier {{ param }}",
+      "updated": "A Indicateur SMI is updated with identifier {{ param }}",
+      "deleted": "A Indicateur SMI is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Indicateur SMI {{ id }}?"
+      },
+      "detail": {
+        "title": "Indicateur SMI"
+      },
+      "id": "ID",
+      "dateIdentification": "Date Identification",
+      "indicateur": "Indicateur",
+      "formuleCalcul": "Formule Calcul",
+      "cible": "Cible",
+      "seuilTolerance": "Seuil Tolerance",
+      "unite": "Unite",
+      "periodicite": "Periodicite",
+      "observations": "Observations",
+      "vigueur": "Vigueur",
+      "responsableDeCalcul": "Responsable De Calcul",
+      "processus": "Processus"
+    }
+  }
+}

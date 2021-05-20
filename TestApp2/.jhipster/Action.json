@@ -1,0 +1,60 @@
+{
+  "name": "Action",
+  "fields": [
+    {
+      "fieldName": "datePlanification",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "action",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TypeAction",
+      "fieldValues": "ACTION_FACE_AU_RISQUE,ACTION_CORRECTIVE,TRAITEMENT_RAPIDE,ACTION_POUR_ATTEINDRE_OBJECTIF,AMELIORATION,PROGRAMME_ENVIRONNEMENTAL,PROGRAMME_SST,PROJET_ENTITE,AUTRES"
+    },
+    {
+      "fieldName": "delai",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "avancement",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "realisee",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "critereResultat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ressourcesNecessaires",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "Statut",
+      "fieldValues": "EN_COURS,PLANIFIEE,RETARD,REALISEE_EFFICACE,REALISEE_NON_EFFICACE,REALISEE_A_EVALUER"
+    },
+    {
+      "fieldName": "efficace",
+      "fieldType": "Efficace",
+      "fieldValues": "EFFICACE,NON_EFFICACE,A_EVALUER"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "action",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121221"
+}

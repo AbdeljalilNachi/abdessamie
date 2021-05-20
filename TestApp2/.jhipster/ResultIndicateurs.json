@@ -1,0 +1,38 @@
+{
+  "name": "ResultIndicateurs",
+  "fields": [
+    {
+      "fieldName": "annee",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "resultatIndicateur",
+      "otherEntityRelationshipName": "resultIndicateurs",
+      "relationshipName": "resultats"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "indicateurSMI",
+      "otherEntityRelationshipName": "resultIndicateurs",
+      "relationshipName": "indicateur"
+    }
+  ],
+  "entityTableName": "result_indicateurs",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121239"
+}

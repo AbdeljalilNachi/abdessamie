@@ -1,0 +1,200 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-obligation-conformite-heading"
+        data-cy="ObligationConformiteCreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.obligationConformite.home.createOrEditLabel"
+      >
+        Create or edit a Obligation Conformite
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.rubrique" for="field_rubrique"
+            >Rubrique</label
+          >
+          <select class="form-control" name="rubrique" formControlName="rubrique" id="field_rubrique" data-cy="rubrique">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Rubrique.null' | translate }}</option>
+            <option value="RUBRIQUE">{{ 'newbetterflyApp.Rubrique.RUBRIQUE' | translate }}</option>
+            <option value="NETTOYAGE">{{ 'newbetterflyApp.Rubrique.NETTOYAGE' | translate }}</option>
+            <option value="EVACUATION_EAUX">{{ 'newbetterflyApp.Rubrique.EVACUATION_EAUX' | translate }}</option>
+            <option value="SANITAIRES">{{ 'newbetterflyApp.Rubrique.SANITAIRES' | translate }}</option>
+            <option value="REFECTOIRES_HEBERGEMENT">{{ 'newbetterflyApp.Rubrique.REFECTOIRES_HEBERGEMENT' | translate }}</option>
+            <option value="DISPOSITIONS_DIVERSES">{{ 'newbetterflyApp.Rubrique.DISPOSITIONS_DIVERSES' | translate }}</option>
+            <option value="AMENAGEMENT_LOCAUX">{{ 'newbetterflyApp.Rubrique.AMENAGEMENT_LOCAUX' | translate }}</option>
+            <option value="AMBIANCES">{{ 'newbetterflyApp.Rubrique.AMBIANCES' | translate }}</option>
+            <option value="ORGANISATION_RH">{{ 'newbetterflyApp.Rubrique.ORGANISATION_RH' | translate }}</option>
+            <option value="CHS">{{ 'newbetterflyApp.Rubrique.CHS' | translate }}</option>
+            <option value="CONVENTION119">{{ 'newbetterflyApp.Rubrique.CONVENTION119' | translate }}</option>
+            <option value="PROTECTION_MACHINES">{{ 'newbetterflyApp.Rubrique.PROTECTION_MACHINES' | translate }}</option>
+            <option value="DISPOSITIFS_PROTECTION">{{ 'newbetterflyApp.Rubrique.DISPOSITIFS_PROTECTION' | translate }}</option>
+            <option value="CONFORMITE">{{ 'newbetterflyApp.Rubrique.CONFORMITE' | translate }}</option>
+            <option value="APPAREILS_LEVAGE">{{ 'newbetterflyApp.Rubrique.APPAREILS_LEVAGE' | translate }}</option>
+            <option value="CABINES_MOYENS_ACCES">{{ 'newbetterflyApp.Rubrique.CABINES_MOYENS_ACCES' | translate }}</option>
+            <option value="INSTALLATIONS_ELECTRIQUES">{{ 'newbetterflyApp.Rubrique.INSTALLATIONS_ELECTRIQUES' | translate }}</option>
+            <option value="ECLAIRAGE_SECOURS">{{ 'newbetterflyApp.Rubrique.ECLAIRAGE_SECOURS' | translate }}</option>
+            <option value="CABINE_PEINTURE_PULVIRISEE">{{ 'newbetterflyApp.Rubrique.CABINE_PEINTURE_PULVIRISEE' | translate }}</option>
+            <option value="AT">{{ 'newbetterflyApp.Rubrique.AT' | translate }}</option>
+            <option value="PRODUIT_CHIMIQUES">{{ 'newbetterflyApp.Rubrique.PRODUIT_CHIMIQUES' | translate }}</option>
+            <option value="SERVICE_MEDICAL">{{ 'newbetterflyApp.Rubrique.SERVICE_MEDICAL' | translate }}</option>
+            <option value="DISPOSITIONS_COMMUNES">{{ 'newbetterflyApp.Rubrique.DISPOSITIONS_COMMUNES' | translate }}</option>
+            <option value="PREVENTION_CONTRE_INCENDIE">{{ 'newbetterflyApp.Rubrique.PREVENTION_CONTRE_INCENDIE' | translate }}</option>
+            <option value="COVID">{{ 'newbetterflyApp.Rubrique.COVID' | translate }}</option>
+            <option value="ENVIRONNEMENT">{{ 'newbetterflyApp.Rubrique.ENVIRONNEMENT' | translate }}</option>
+            <option value="CODE_TRAVAIL">{{ 'newbetterflyApp.Rubrique.CODE_TRAVAIL' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.reference" for="field_reference"
+            >Reference</label
+          >
+          <input type="text" class="form-control" name="reference" id="field_reference" data-cy="reference" formControlName="reference" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.num" for="field_num">Num</label>
+          <input type="number" class="form-control" name="num" id="field_num" data-cy="num" formControlName="num" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.exigence" for="field_exigence"
+            >Exigence</label
+          >
+          <input type="text" class="form-control" name="exigence" id="field_exigence" data-cy="exigence" formControlName="exigence" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.applicable" for="field_applicable"
+            >Applicable</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="applicable"
+            id="field_applicable"
+            data-cy="applicable"
+            formControlName="applicable"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.conforme" for="field_conforme"
+            >Conforme</label
+          >
+          <input type="checkbox" class="form-check" name="conforme" id="field_conforme" data-cy="conforme" formControlName="conforme" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.statut" for="field_statut">Statut</label>
+          <input type="number" class="form-control" name="statut" id="field_statut" data-cy="statut" formControlName="statut" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.observation" for="field_observation"
+            >Observation</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="observation"
+            id="field_observation"
+            data-cy="observation"
+            formControlName="observation"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.origine" for="field_origine">Origine</label>
+          <input type="text" class="form-control" name="origine" id="field_origine" data-cy="origine" formControlName="origine" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.action" for="field_action">Action</label>
+          <select class="form-control" id="field_action" data-cy="action" name="action" formControlName="action">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="actionOption.id === editForm.get('action')!.value?.id ? editForm.get('action')!.value : actionOption"
+              *ngFor="let actionOption of actionsSharedCollection; trackBy: trackActionById"
+            >
+              {{ actionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.delegue" for="field_delegue">Delegue</label>
+          <select class="form-control" id="field_delegue" data-cy="delegue" name="delegue" formControlName="delegue">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('delegue')!.value?.id ? editForm.get('delegue')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.obligationConformite.processus" for="field_processus"
+            >Processus</label
+          >
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

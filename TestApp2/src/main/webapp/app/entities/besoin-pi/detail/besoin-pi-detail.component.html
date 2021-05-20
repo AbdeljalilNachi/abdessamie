@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="besoinPI">
+      <h2 data-cy="besoinPIDetailsHeading"><span jhiTranslate="newbetterflyApp.besoinPI.detail.title">Besoin PI</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ besoinPI.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.besoinPI.dateIdentification">Date Identification</span></dt>
+        <dd>
+          <span>{{ besoinPI.dateIdentification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.besoinPI.piPertinentes">Pi Pertinentes</span></dt>
+        <dd>
+          <span>{{ besoinPI.piPertinentes }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.besoinPI.pertinente">Pertinente</span></dt>
+        <dd>
+          <span>{{ besoinPI.pertinente }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.besoinPI.priseEnCharge">Prise En Charge</span></dt>
+        <dd>
+          <span>{{ besoinPI.priseEnCharge }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.besoinPI.afficher">Afficher</span></dt>
+        <dd>
+          <span>{{ besoinPI.afficher }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.besoinPI.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="besoinPI.processus">
+            <a [routerLink]="['/processus-smi', besoinPI.processus?.id, 'view']">{{ besoinPI.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/besoin-pi', besoinPI.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

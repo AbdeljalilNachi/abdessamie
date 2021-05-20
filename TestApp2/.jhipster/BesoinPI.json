@@ -1,0 +1,44 @@
+{
+  "name": "BesoinPI",
+  "fields": [
+    {
+      "fieldName": "dateIdentification",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "piPertinentes",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pertinente",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "priseEnCharge",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "afficher",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "besoinPI",
+      "relationshipName": "processus"
+    }
+  ],
+  "entityTableName": "besoin_pi",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121227"
+}

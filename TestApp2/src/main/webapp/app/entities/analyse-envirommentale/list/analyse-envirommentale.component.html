@@ -1,0 +1,211 @@
+<div>
+  <h2 id="page-heading" data-cy="AnalyseEnvirommentaleHeading">
+    <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.home.title">Analyse Envirommentales</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-analyse-envirommentale"
+        [routerLink]="['/analyse-envirommentale/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="newbetterflyApp.analyseEnvirommentale.home.createLabel">
+          Create a new Analyse Envirommentale
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'newbetterflyApp.analyseEnvirommentale.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="analyseEnvirommentales?.length === 0">
+    <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.home.notFound">No analyseEnvirommentales found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="analyseEnvirommentales && analyseEnvirommentales.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="businessUnit">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.businessUnit">Business Unit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="activite">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.activite">Activite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="aspectEnvironnemental">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.aspectEnvironnemental">Aspect Environnemental</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="impactEnvironnemental">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.impactEnvironnemental">Impact Environnemental</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="competencesRequises">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.competencesRequises">Competences Requises</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="situation">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.situation">Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="frequence">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.frequence">Frequence</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="sensibiliteMilieu">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.sensibiliteMilieu">Sensibilite Milieu</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="coefficientMaitrise">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.coefficientMaitrise">Coefficient Maitrise</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gravite">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.gravite">Gravite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="criticite">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.criticite">Criticite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="maitriseExistante">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.maitriseExistante">Maitrise Existante</span>
+            <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="origine">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.origine">Origine</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="action.id">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.action">Action</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="delegue.id">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.delegue">Delegue</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="processus.id">
+            <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.processus">Processus</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let analyseEnvirommentale of analyseEnvirommentales; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/analyse-envirommentale', analyseEnvirommentale.id, 'view']">{{ analyseEnvirommentale.id }}</a>
+          </td>
+          <td>{{ analyseEnvirommentale.date | formatMediumDate }}</td>
+          <td>{{ analyseEnvirommentale.businessUnit }}</td>
+          <td>{{ analyseEnvirommentale.activite }}</td>
+          <td>{{ analyseEnvirommentale.aspectEnvironnemental }}</td>
+          <td>{{ analyseEnvirommentale.impactEnvironnemental }}</td>
+          <td>{{ analyseEnvirommentale.competencesRequises }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.Situation.' + analyseEnvirommentale.situation }}">{{ analyseEnvirommentale.situation }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.frequence }}">{{ analyseEnvirommentale.frequence }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.sensibiliteMilieu }}">
+            {{ analyseEnvirommentale.sensibiliteMilieu }}
+          </td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.coefficientMaitrise }}">
+            {{ analyseEnvirommentale.coefficientMaitrise }}
+          </td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.gravite }}">{{ analyseEnvirommentale.gravite }}</td>
+          <td>{{ analyseEnvirommentale.criticite }}</td>
+          <td>{{ analyseEnvirommentale.maitriseExistante }}</td>
+          <td>{{ analyseEnvirommentale.origine }}</td>
+          <td>
+            <div *ngIf="analyseEnvirommentale.action">
+              <a [routerLink]="['/action', analyseEnvirommentale.action?.id, 'view']">{{ analyseEnvirommentale.action?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ analyseEnvirommentale.delegue?.id }}
+          </td>
+          <td>
+            <div *ngIf="analyseEnvirommentale.processus">
+              <a [routerLink]="['/processus-smi', analyseEnvirommentale.processus?.id, 'view']">{{
+                analyseEnvirommentale.processus?.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/analyse-envirommentale', analyseEnvirommentale.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/analyse-envirommentale', analyseEnvirommentale.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(analyseEnvirommentale)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="analyseEnvirommentales && analyseEnvirommentales.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

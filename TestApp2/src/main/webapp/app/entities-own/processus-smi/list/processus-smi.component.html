@@ -1,0 +1,171 @@
+<div>
+  <h2 id="page-heading" data-cy="ProcessusSMIHeading">
+    <span jhiTranslate="newbetterflyApp.processusSMI.home.title">Processus SMIS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="newbetterflyApp.processusSMI.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-processus-smi"
+        [routerLink]="['/processus-smi/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="newbetterflyApp.processusSMI.home.createLabel"> Create a new Processus SMI </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'newbetterflyApp.processusSMI.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="processusSMIS?.length === 0">
+    <span jhiTranslate="newbetterflyApp.processusSMI.home.notFound">No processusSMIS found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="processusSMIS && processusSMIS.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="processus">
+            <span jhiTranslate="newbetterflyApp.processusSMI.processus">Processus</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="newbetterflyApp.processusSMI.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="version">
+            <span jhiTranslate="newbetterflyApp.processusSMI.version">Version</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="finalite">
+            <span jhiTranslate="newbetterflyApp.processusSMI.finalite">Finalite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="ficheProcessus">
+            <span jhiTranslate="newbetterflyApp.processusSMI.ficheProcessus">Fiche Processus</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="type">
+            <span jhiTranslate="newbetterflyApp.processusSMI.type">Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="vigueur">
+            <span jhiTranslate="newbetterflyApp.processusSMI.vigueur">Vigueur</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="pilote.id">
+            <span jhiTranslate="newbetterflyApp.processusSMI.pilote">Pilote</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="audit.id">
+            <span jhiTranslate="newbetterflyApp.processusSMI.audit">Audit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let processusSMI of processusSMIS; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/processus-smi', processusSMI.id, 'view']">{{ processusSMI.id }}</a>
+          </td>
+          <td>{{ processusSMI.processus }}</td>
+          <td>{{ processusSMI.date | formatMediumDate }}</td>
+          <td>{{ processusSMI.version }}</td>
+          <td>{{ processusSMI.finalite }}</td>
+          <td>
+            <a
+              *ngIf="processusSMI.ficheProcessus"
+              (click)="openFile(processusSMI.ficheProcessus, processusSMI.ficheProcessusContentType)"
+              jhiTranslate="entity.action.open"
+              >open</a
+            >
+            <span *ngIf="processusSMI.ficheProcessus"
+              >{{ processusSMI.ficheProcessusContentType }}, {{ byteSize(processusSMI.ficheProcessus) }}</span
+            >
+          </td>
+          <td jhiTranslate="{{ 'newbetterflyApp.TypeProcessus.' + processusSMI.type }}">{{ processusSMI.type }}</td>
+          <td>{{ processusSMI.vigueur }}</td>
+          <td>
+            {{ processusSMI.pilote?.id }}
+          </td>
+          <td>
+            <div *ngIf="processusSMI.audit">
+              <a [routerLink]="['/audit', processusSMI.audit?.id, 'view']">{{ processusSMI.audit?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/processus-smi', processusSMI.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/processus-smi', processusSMI.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(processusSMI)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="processusSMIS && processusSMIS.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

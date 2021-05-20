@@ -1,0 +1,31 @@
+{
+  "newbetterflyApp": {
+    "nonConformite": {
+      "home": {
+        "title": "NonConformites",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Non Conformite",
+        "createOrEditLabel": "Créer ou éditer un Non Conformite",
+        "search": "Recherche pour Non Conformite",
+        "notFound": "Aucun Non Conformite trouvé"
+      },
+      "created": "Un nouveau Non Conformite a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Non Conformite avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Non Conformite avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Non Conformite {{ id }} ?"
+      },
+      "detail": {
+        "title": "Non Conformite"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "causesPotentielles": "Causes Potentielles",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

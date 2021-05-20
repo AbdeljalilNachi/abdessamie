@@ -1,0 +1,32 @@
+{
+  "newbetterflyApp": {
+    "processusSMI": {
+      "home": {
+        "title": "ProcessusSMIS",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Processus SMI",
+        "createOrEditLabel": "Créer ou éditer un Processus SMI",
+        "search": "Recherche pour Processus SMI",
+        "notFound": "Aucun Processus SMI trouvé"
+      },
+      "created": "Un nouveau Processus SMI a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Processus SMI avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Processus SMI avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Processus SMI {{ id }} ?"
+      },
+      "detail": {
+        "title": "Processus SMI"
+      },
+      "id": "ID",
+      "processus": "Processus",
+      "date": "Date",
+      "version": "Version",
+      "finalite": "Finalite",
+      "ficheProcessus": "Fiche Processus",
+      "type": "Type",
+      "vigueur": "Vigueur",
+      "pilote": "Pilote"
+    }
+  }
+}

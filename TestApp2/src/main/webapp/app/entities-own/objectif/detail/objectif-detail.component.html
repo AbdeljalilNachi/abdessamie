@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="objectif">
+      <h2 data-cy="objectifDetailsHeading"><span jhiTranslate="newbetterflyApp.objectif.detail.title">Objectif</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ objectif.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.axedelapolitiqueqse">Axedelapolitiqueqse</span></dt>
+        <dd>
+          <span>{{ objectif.axedelapolitiqueqse }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.objectifqse">Objectifqse</span></dt>
+        <dd>
+          <span>{{ objectif.objectifqse }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.origine">Origine</span></dt>
+        <dd>
+          <span>{{ objectif.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.action">Action</span></dt>
+        <dd>
+          <div *ngIf="objectif.action">
+            <a [routerLink]="['/action', objectif.action?.id, 'view']">{{ objectif.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ objectif.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="objectif.processus">
+            <a [routerLink]="['/processus-smi', objectif.processus?.id, 'view']">{{ objectif.processus?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.objectif.indicateur">Indicateur</span></dt>
+        <dd>
+          <div *ngIf="objectif.indicateur">
+            <a [routerLink]="['/indicateur-smi', objectif.indicateur?.id, 'view']">{{ objectif.indicateur?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/objectif', objectif.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

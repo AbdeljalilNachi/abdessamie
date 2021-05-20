@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="action">
+      <h2 data-cy="actionDetailsHeading"><span jhiTranslate="newbetterflyApp.action.detail.title">Action</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ action.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.datePlanification">Date Planification</span></dt>
+        <dd>
+          <span>{{ action.datePlanification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.action">Action</span></dt>
+        <dd>
+          <span>{{ action.action }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.TypeAction.' + action.type }}">{{ action.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.delai">Delai</span></dt>
+        <dd>
+          <span>{{ action.delai | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.avancement">Avancement</span></dt>
+        <dd>
+          <span>{{ action.avancement }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.realisee">Realisee</span></dt>
+        <dd>
+          <span>{{ action.realisee }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.critereResultat">Critere Resultat</span></dt>
+        <dd>
+          <span>{{ action.critereResultat }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.ressourcesNecessaires">Ressources Necessaires</span></dt>
+        <dd>
+          <span>{{ action.ressourcesNecessaires }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.statut">Statut</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Statut.' + action.statut }}">{{ action.statut }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.action.efficace">Efficace</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Efficace.' + action.efficace }}">{{ action.efficace }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/action', action.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

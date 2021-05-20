@@ -1,0 +1,33 @@
+{
+  "newbetterflyApp": {
+    "reclamation": {
+      "home": {
+        "title": "Reclamations",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Reclamation",
+        "createOrEditLabel": "Créer ou éditer un Reclamation",
+        "search": "Recherche pour Reclamation",
+        "notFound": "Aucun Reclamation trouvé"
+      },
+      "created": "Un nouveau Reclamation a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Reclamation avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Reclamation avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Reclamation {{ id }} ?"
+      },
+      "detail": {
+        "title": "Reclamation"
+      },
+      "id": "ID",
+      "date": "Date",
+      "description": "Description",
+      "justifiee": "Justifiee",
+      "client": "Client",
+      "piecejointe": "Piecejointe",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

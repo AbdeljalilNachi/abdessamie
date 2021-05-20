@@ -1,0 +1,86 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="obligationConformite">
+      <h2 data-cy="obligationConformiteDetailsHeading">
+        <span jhiTranslate="newbetterflyApp.obligationConformite.detail.title">Obligation Conformite</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ obligationConformite.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.date">Date</span></dt>
+        <dd>
+          <span>{{ obligationConformite.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.rubrique">Rubrique</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Rubrique.' + obligationConformite.rubrique }}">{{ obligationConformite.rubrique }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.reference">Reference</span></dt>
+        <dd>
+          <span>{{ obligationConformite.reference }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.num">Num</span></dt>
+        <dd>
+          <span>{{ obligationConformite.num }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.exigence">Exigence</span></dt>
+        <dd>
+          <span>{{ obligationConformite.exigence }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.applicable">Applicable</span></dt>
+        <dd>
+          <span>{{ obligationConformite.applicable }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.conforme">Conforme</span></dt>
+        <dd>
+          <span>{{ obligationConformite.conforme }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.statut">Statut</span></dt>
+        <dd>
+          <span>{{ obligationConformite.statut }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.observation">Observation</span></dt>
+        <dd>
+          <span>{{ obligationConformite.observation }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.origine">Origine</span></dt>
+        <dd>
+          <span>{{ obligationConformite.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.action">Action</span></dt>
+        <dd>
+          <div *ngIf="obligationConformite.action">
+            <a [routerLink]="['/action', obligationConformite.action?.id, 'view']">{{ obligationConformite.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ obligationConformite.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.obligationConformite.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="obligationConformite.processus">
+            <a [routerLink]="['/processus-smi', obligationConformite.processus?.id, 'view']">{{ obligationConformite.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/obligation-conformite', obligationConformite.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

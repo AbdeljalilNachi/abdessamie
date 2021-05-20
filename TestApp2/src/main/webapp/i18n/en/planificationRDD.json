@@ -1,0 +1,29 @@
+{
+  "newbetterflyApp": {
+    "planificationRDD": {
+      "home": {
+        "title": "Planification RDDS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Planification RDD",
+        "createOrEditLabel": "Create or edit a Planification RDD",
+        "search": "Search for Planification RDD",
+        "notFound": "No Planification RDDS found"
+      },
+      "created": "A new Planification RDD is created with identifier {{ param }}",
+      "updated": "A Planification RDD is updated with identifier {{ param }}",
+      "deleted": "A Planification RDD is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Planification RDD {{ id }}?"
+      },
+      "detail": {
+        "title": "Planification RDD"
+      },
+      "id": "ID",
+      "nRdd": "N Rdd",
+      "date": "Date",
+      "realisee": "Realisee",
+      "presentation": "Presentation",
+      "standard": "Standard"
+    }
+  }
+}

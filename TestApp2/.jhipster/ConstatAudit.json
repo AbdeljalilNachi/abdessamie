@@ -1,0 +1,55 @@
+{
+  "name": "ConstatAudit",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "TypeConstatAudit",
+      "fieldValues": "PF,RA,PS,NC"
+    },
+    {
+      "fieldName": "constat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "origine",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "action",
+      "otherEntityRelationshipName": "constatAudit",
+      "relationshipName": "action"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "constatAudit",
+      "relationshipName": "delegue"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "constatAudit",
+      "relationshipName": "processus"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "audit",
+      "otherEntityRelationshipName": "constatAudit",
+      "relationshipName": "audit"
+    }
+  ],
+  "entityTableName": "constat_audit",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121228"
+}

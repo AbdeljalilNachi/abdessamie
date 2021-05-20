@@ -1,0 +1,125 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-planification-rdd-heading"
+        data-cy="PlanificationRDDCreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.planificationRDD.home.createOrEditLabel"
+      >
+        Create or edit a Planification RDD
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.planificationRDD.nRdd" for="field_nRdd">N Rdd</label>
+          <input type="number" class="form-control" name="nRdd" id="field_nRdd" data-cy="nRdd" formControlName="nRdd" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.planificationRDD.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.planificationRDD.realisee" for="field_realisee">Realisee</label>
+          <input type="checkbox" class="form-check" name="realisee" id="field_realisee" data-cy="realisee" formControlName="realisee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.planificationRDD.presentation" for="field_presentation"
+            >Presentation</label
+          >
+          <div>
+            <div *ngIf="editForm.get('presentation')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-left"
+                (click)="openFile(editForm.get('presentation')!.value, editForm.get('presentationContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-left"
+                >{{ editForm.get('presentationContentType')!.value }}, {{ byteSize(editForm.get('presentation')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ presentation: null }); editForm.patchValue({ presentationContentType: null })"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_presentation"
+              data-cy="presentation"
+              (change)="setFileData($event, 'presentation', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="presentation"
+            id="field_presentation"
+            data-cy="presentation"
+            formControlName="presentation"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="presentationContentType"
+            id="field_presentationContentType"
+            formControlName="presentationContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.planificationRDD.standard" for="field_standard">Standard</label>
+          <select class="form-control" name="standard" formControlName="standard" id="field_standard" data-cy="standard">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Standard.null' | translate }}</option>
+            <option value="ISO9001">{{ 'newbetterflyApp.Standard.ISO9001' | translate }}</option>
+            <option value="ISO14001">{{ 'newbetterflyApp.Standard.ISO14001' | translate }}</option>
+            <option value="ISO45001">{{ 'newbetterflyApp.Standard.ISO45001' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

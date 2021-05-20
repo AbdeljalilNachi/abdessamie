@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-audit-heading" data-cy="AuditCreateUpdateHeading" jhiTranslate="newbetterflyApp.audit.home.createOrEditLabel">
+        Create or edit a Audit
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.dateAudit" for="field_dateAudit">Date Audit</label>
+          <div class="input-group">
+            <input
+              (change)="IdOnChange()"
+              id="field_dateAudit"
+              data-cy="dateAudit"
+              type="text"
+              class="form-control"
+              name="dateAudit"
+              ngbDatepicker
+              #dateAuditDp="ngbDatepicker"
+              formControlName="dateAudit"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateAuditDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.typeAudit" for="field_typeAudit">Type Audit</label>
+          <select (change)="IdOnChange()" class="form-control" name="typeAudit" formControlName="typeAudit" id="field_typeAudit" data-cy="typeAudit">
+            <option [ngValue]="null">{{ 'newbetterflyApp.TypeAudit.null' | translate }}</option>
+            <option value="Interne">{{ 'newbetterflyApp.TypeAudit.Interne' | translate }}</option>
+            <option value="Externe">{{ 'newbetterflyApp.TypeAudit.Externe' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.standard" for="field_standard">Standard</label>
+          <select class="form-control" name="standard" formControlName="standard" id="field_standard" data-cy="standard" multiple="multiple">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Standard.null' | translate }}</option>
+            <option value="ISO9001">{{ 'newbetterflyApp.Standard.ISO9001' | translate }}</option>
+            <option value="ISO14001">{{ 'newbetterflyApp.Standard.ISO14001' | translate }}</option>
+            <option value="ISO45001">{{ 'newbetterflyApp.Standard.ISO45001' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.iD" for="field_iD">I D</label>
+          <input type="text" class="form-control" name="iD" id="field_iD" data-cy="iD" formControlName="iD" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.statut" for="field_statut">Statut</label>
+          <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
+            <option [ngValue]="null">{{ 'newbetterflyApp.StatutAudit.null' | translate }}</option>
+            <option value="Retard">{{ 'newbetterflyApp.StatutAudit.Retard' | translate }}</option>
+            <option value="REALISE">{{ 'newbetterflyApp.StatutAudit.REALISE' | translate }}</option>
+            <option value="PLANIFIE">{{ 'newbetterflyApp.StatutAudit.PLANIFIE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.conclusion" for="field_conclusion">Conclusion</label>
+          <input
+            type="text"
+            class="form-control"
+            name="conclusion"
+            id="field_conclusion"
+            data-cy="conclusion"
+            formControlName="conclusion"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus" multiple="multiple">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.audit.auditeur" for="field_auditeur">Auditeur</label>
+          <select class="form-control" id="field_auditeur" data-cy="auditeur" name="auditeur" formControlName="auditeur">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('auditeur')!.value?.id ? editForm.get('auditeur')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+{
+  "name": "Audit",
+  "fields": [
+    {
+      "fieldName": "dateAudit",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "typeAudit",
+      "fieldType": "TypeAudit",
+      "fieldValues": "Interne,Externe"
+    },
+    {
+      "fieldName": "standard",
+      "fieldType": "Standard",
+      "fieldValues": "ISO9001,ISO14001,ISO45001"
+    },
+    {
+      "fieldName": "iD",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "StatutAudit",
+      "fieldValues": "Retard,REALISE,PLANIFIE"
+    },
+    {
+      "fieldName": "conclusion",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "audit",
+      "relationshipName": "processus"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "audit",
+      "relationshipName": "auditeur"
+    }
+  ],
+  "entityTableName": "audit",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121225"
+}

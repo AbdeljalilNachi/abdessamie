@@ -1,0 +1,28 @@
+{
+  "newbetterflyApp": {
+    "resultatIndicateur": {
+      "home": {
+        "title": "Resultat Indicateurs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Resultat Indicateur",
+        "createOrEditLabel": "Create or edit a Resultat Indicateur",
+        "search": "Search for Resultat Indicateur",
+        "notFound": "No Resultat Indicateurs found"
+      },
+      "created": "A new Resultat Indicateur is created with identifier {{ param }}",
+      "updated": "A Resultat Indicateur is updated with identifier {{ param }}",
+      "deleted": "A Resultat Indicateur is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Resultat Indicateur {{ id }}?"
+      },
+      "detail": {
+        "title": "Resultat Indicateur"
+      },
+      "id": "ID",
+      "mois": "Mois",
+      "cible": "Cible",
+      "resultat": "Resultat",
+      "resultIndicateurs": "Result Indicateurs"
+    }
+  }
+}

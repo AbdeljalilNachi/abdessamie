@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="indicateurSMI">
+      <h2 data-cy="indicateurSMIDetailsHeading"><span jhiTranslate="newbetterflyApp.indicateurSMI.detail.title">Indicateur SMI</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.dateIdentification">Date Identification</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.dateIdentification | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.indicateur">Indicateur</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.indicateur }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.formuleCalcul">Formule Calcul</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.formuleCalcul }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.cible">Cible</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.cible }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.seuilTolerance">Seuil Tolerance</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.seuilTolerance }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.unite">Unite</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.unite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.periodicite">Periodicite</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.periodicite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.observations">Observations</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.observations }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.vigueur">Vigueur</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.vigueur }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.responsableDeCalcul">Responsable De Calcul</span></dt>
+        <dd>
+          <span>{{ indicateurSMI.responsableDeCalcul?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.indicateurSMI.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="indicateurSMI.processus">
+            <a [routerLink]="['/processus-smi', indicateurSMI.processus?.id, 'view']">{{ indicateurSMI.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/indicateur-smi', indicateurSMI.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

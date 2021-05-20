@@ -1,0 +1,167 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-action-heading" data-cy="ActionCreateUpdateHeading" jhiTranslate="newbetterflyApp.action.home.createOrEditLabel">
+        Create or edit a Action
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.datePlanification" for="field_datePlanification"
+            >Date Planification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_datePlanification"
+              data-cy="datePlanification"
+              type="text"
+              class="form-control"
+              name="datePlanification"
+              ngbDatepicker
+              #datePlanificationDp="ngbDatepicker"
+              formControlName="datePlanification"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="datePlanificationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.action" for="field_action">Action</label>
+          <input type="text" class="form-control" name="action" id="field_action" data-cy="action" formControlName="action" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'newbetterflyApp.TypeAction.null' | translate }}</option>
+            <option value="ACTION_FACE_AU_RISQUE">{{ 'newbetterflyApp.TypeAction.ACTION_FACE_AU_RISQUE' | translate }}</option>
+            <option value="ACTION_CORRECTIVE">{{ 'newbetterflyApp.TypeAction.ACTION_CORRECTIVE' | translate }}</option>
+            <option value="TRAITEMENT_RAPIDE">{{ 'newbetterflyApp.TypeAction.TRAITEMENT_RAPIDE' | translate }}</option>
+            <option value="ACTION_POUR_ATTEINDRE_OBJECTIF">
+              {{ 'newbetterflyApp.TypeAction.ACTION_POUR_ATTEINDRE_OBJECTIF' | translate }}
+            </option>
+            <option value="AMELIORATION">{{ 'newbetterflyApp.TypeAction.AMELIORATION' | translate }}</option>
+            <option value="PROGRAMME_ENVIRONNEMENTAL">{{ 'newbetterflyApp.TypeAction.PROGRAMME_ENVIRONNEMENTAL' | translate }}</option>
+            <option value="PROGRAMME_SST">{{ 'newbetterflyApp.TypeAction.PROGRAMME_SST' | translate }}</option>
+            <option value="PROJET_ENTITE">{{ 'newbetterflyApp.TypeAction.PROJET_ENTITE' | translate }}</option>
+            <option value="AUTRES">{{ 'newbetterflyApp.TypeAction.AUTRES' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.delai" for="field_delai">Delai</label>
+          <div class="input-group">
+            <input
+              id="field_delai"
+              data-cy="delai"
+              type="text"
+              class="form-control"
+              name="delai"
+              ngbDatepicker
+              #delaiDp="ngbDatepicker"
+              formControlName="delai"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="delaiDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.avancement" for="field_avancement">Avancement</label>
+          <input
+            type="text"
+            class="form-control"
+            name="avancement"
+            id="field_avancement"
+            data-cy="avancement"
+            formControlName="avancement"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.realisee" for="field_realisee">Realisee</label>
+          <input type="checkbox" class="form-check" name="realisee" id="field_realisee" data-cy="realisee" formControlName="realisee" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.critereResultat" for="field_critereResultat"
+            >Critere Resultat</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="critereResultat"
+            id="field_critereResultat"
+            data-cy="critereResultat"
+            formControlName="critereResultat"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.ressourcesNecessaires" for="field_ressourcesNecessaires"
+            >Ressources Necessaires</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="ressourcesNecessaires"
+            id="field_ressourcesNecessaires"
+            data-cy="ressourcesNecessaires"
+            formControlName="ressourcesNecessaires"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.statut" for="field_statut">Statut</label>
+          <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Statut.null' | translate }}</option>
+            <option value="EN_COURS">{{ 'newbetterflyApp.Statut.EN_COURS' | translate }}</option>
+            <option value="PLANIFIEE">{{ 'newbetterflyApp.Statut.PLANIFIEE' | translate }}</option>
+            <option value="RETARD">{{ 'newbetterflyApp.Statut.RETARD' | translate }}</option>
+            <option value="REALISEE_EFFICACE">{{ 'newbetterflyApp.Statut.REALISEE_EFFICACE' | translate }}</option>
+            <option value="REALISEE_NON_EFFICACE">{{ 'newbetterflyApp.Statut.REALISEE_NON_EFFICACE' | translate }}</option>
+            <option value="REALISEE_A_EVALUER">{{ 'newbetterflyApp.Statut.REALISEE_A_EVALUER' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.action.efficace" for="field_efficace">Efficace</label>
+          <select class="form-control" name="efficace" formControlName="efficace" id="field_efficace" data-cy="efficace">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Efficace.null' | translate }}</option>
+            <option value="EFFICACE">{{ 'newbetterflyApp.Efficace.EFFICACE' | translate }}</option>
+            <option value="NON_EFFICACE">{{ 'newbetterflyApp.Efficace.NON_EFFICACE' | translate }}</option>
+            <option value="A_EVALUER">{{ 'newbetterflyApp.Efficace.A_EVALUER' | translate }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="document">
+      <h2 data-cy="documentDetailsHeading"><span jhiTranslate="newbetterflyApp.document.detail.title">Document</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ document.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.date">Date</span></dt>
+        <dd>
+          <span>{{ document.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.intitule">Intitule</span></dt>
+        <dd>
+          <span>{{ document.intitule }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.code">Code</span></dt>
+        <dd>
+          <span>{{ document.code }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.version">Version</span></dt>
+        <dd>
+          <span>{{ document.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.type">Type</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.TypeDocument.' + document.type }}">{{ document.type }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.pieceJointe">Piece Jointe</span></dt>
+        <dd>
+          <div *ngIf="document.pieceJointe">
+            <a (click)="openFile(document.pieceJointe, document.pieceJointeContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ document.pieceJointeContentType }}, {{ byteSize(document.pieceJointe) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.enApplication">En Application</span></dt>
+        <dd>
+          <span>{{ document.enApplication }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.appouve">Appouve</span></dt>
+        <dd>
+          <span>{{ document.appouve }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.acces">Acces</span></dt>
+        <dd>
+          <span>{{ document.acces?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.document.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="document.processus">
+            <a [routerLink]="['/processus-smi', document.processus?.id, 'view']">{{ document.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/document', document.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

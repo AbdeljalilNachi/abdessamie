@@ -1,0 +1,41 @@
+{
+  "newbetterflyApp": {
+    "analyseSST": {
+      "home": {
+        "title": "AnalyseSSTS",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Analyse SST",
+        "createOrEditLabel": "Créer ou éditer un Analyse SST",
+        "search": "Recherche pour Analyse SST",
+        "notFound": "Aucun Analyse SST trouvé"
+      },
+      "created": "Un nouveau Analyse SST a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Analyse SST avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Analyse SST avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Analyse SST {{ id }} ?"
+      },
+      "detail": {
+        "title": "Analyse SST"
+      },
+      "id": "ID",
+      "date": "Date",
+      "buisnessUnit": "Buisness Unit",
+      "uniteTravail": "Unite Travail",
+      "danger": "Danger",
+      "risque": "Risque",
+      "competence": "Competence",
+      "situation": "Situation",
+      "frequence": "Frequence",
+      "dureeExposition": "Duree Exposition",
+      "coefficientMaitrise": "Coefficient Maitrise",
+      "gravite": "Gravite",
+      "criticite": "Criticite",
+      "maitriseExistante": "Maitrise Existante",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

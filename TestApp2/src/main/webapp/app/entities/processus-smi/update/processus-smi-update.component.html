@@ -1,0 +1,148 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-processus-smi-heading"
+        data-cy="ProcessusSMICreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.processusSMI.home.createOrEditLabel"
+      >
+        Create or edit a Processus SMI
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.processus" for="field_processus">Processus</label>
+          <input type="text" class="form-control" name="processus" id="field_processus" data-cy="processus" formControlName="processus" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.version" for="field_version">Version</label>
+          <input type="number" class="form-control" name="version" id="field_version" data-cy="version" formControlName="version" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.finalite" for="field_finalite">Finalite</label>
+          <input type="text" class="form-control" name="finalite" id="field_finalite" data-cy="finalite" formControlName="finalite" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.ficheProcessus" for="field_ficheProcessus"
+            >Fiche Processus</label
+          >
+          <div>
+            <div *ngIf="editForm.get('ficheProcessus')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-left"
+                (click)="openFile(editForm.get('ficheProcessus')!.value, editForm.get('ficheProcessusContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-left"
+                >{{ editForm.get('ficheProcessusContentType')!.value }}, {{ byteSize(editForm.get('ficheProcessus')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ ficheProcessus: null }); editForm.patchValue({ ficheProcessusContentType: null })"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_ficheProcessus"
+              data-cy="ficheProcessus"
+              (change)="setFileData($event, 'ficheProcessus', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="ficheProcessus"
+            id="field_ficheProcessus"
+            data-cy="ficheProcessus"
+            formControlName="ficheProcessus"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="ficheProcessusContentType"
+            id="field_ficheProcessusContentType"
+            formControlName="ficheProcessusContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'newbetterflyApp.TypeProcessus.null' | translate }}</option>
+            <option value="MANAGEMENT">{{ 'newbetterflyApp.TypeProcessus.MANAGEMENT' | translate }}</option>
+            <option value="REALISATION">{{ 'newbetterflyApp.TypeProcessus.REALISATION' | translate }}</option>
+            <option value="SUPPORT">{{ 'newbetterflyApp.TypeProcessus.SUPPORT' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.vigueur" for="field_vigueur">Vigueur</label>
+          <input type="checkbox" class="form-check" name="vigueur" id="field_vigueur" data-cy="vigueur" formControlName="vigueur" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.processusSMI.pilote" for="field_pilote">Pilote</label>
+          <select class="form-control" id="field_pilote" data-cy="pilote" name="pilote" formControlName="pilote">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('pilote')!.value?.id ? editForm.get('pilote')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

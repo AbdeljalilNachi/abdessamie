@@ -1,0 +1,28 @@
+{
+  "newbetterflyApp": {
+    "resultIndicateurs": {
+      "home": {
+        "title": "ResultIndicateurs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Result Indicateurs",
+        "createOrEditLabel": "Créer ou éditer un Result Indicateurs",
+        "search": "Recherche pour Result Indicateurs",
+        "notFound": "Aucun Result Indicateurs trouvé"
+      },
+      "created": "Un nouveau Result Indicateurs a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Result Indicateurs avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Result Indicateurs avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Result Indicateurs {{ id }} ?"
+      },
+      "detail": {
+        "title": "Result Indicateurs"
+      },
+      "id": "ID",
+      "annee": "Annee",
+      "observation": "Observation",
+      "resultats": "Resultats",
+      "indicateur": "Indicateur"
+    }
+  }
+}

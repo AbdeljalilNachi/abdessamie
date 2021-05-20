@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="reclamation">
+      <h2 data-cy="reclamationDetailsHeading"><span jhiTranslate="newbetterflyApp.reclamation.detail.title">Reclamation</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ reclamation.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.date">Date</span></dt>
+        <dd>
+          <span>{{ reclamation.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.description">Description</span></dt>
+        <dd>
+          <span>{{ reclamation.description }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.justifiee">Justifiee</span></dt>
+        <dd>
+          <span>{{ reclamation.justifiee }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.client">Client</span></dt>
+        <dd>
+          <span>{{ reclamation.client }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.piecejointe">Piecejointe</span></dt>
+        <dd>
+          <div *ngIf="reclamation.piecejointe">
+            <a (click)="openFile(reclamation.piecejointe, reclamation.piecejointeContentType)" jhiTranslate="entity.action.open">open</a>
+            {{ reclamation.piecejointeContentType }}, {{ byteSize(reclamation.piecejointe) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.origine">Origine</span></dt>
+        <dd>
+          <span>{{ reclamation.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.action">Action</span></dt>
+        <dd>
+          <div *ngIf="reclamation.action">
+            <a [routerLink]="['/action', reclamation.action?.id, 'view']">{{ reclamation.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ reclamation.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.reclamation.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="reclamation.processus">
+            <a [routerLink]="['/processus-smi', reclamation.processus?.id, 'view']">{{ reclamation.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/reclamation', reclamation.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

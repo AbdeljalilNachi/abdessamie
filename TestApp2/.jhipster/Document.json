@@ -1,0 +1,64 @@
+{
+  "name": "Document",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "intitule",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "TypeDocument",
+      "fieldValues": "PROECDURE,INSTRUCTION,ENREGISTREMENT,MANUEL,POLITIQUE,AUTRES"
+    },
+    {
+      "fieldName": "pieceJointe",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "enApplication",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "appouve",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "document",
+      "relationshipName": "acces"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "document",
+      "relationshipName": "processus"
+    }
+  ],
+  "entityTableName": "document",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121229"
+}

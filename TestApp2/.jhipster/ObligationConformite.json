@@ -1,0 +1,77 @@
+{
+  "name": "ObligationConformite",
+  "fields": [
+    {
+      "fieldName": "date",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "rubrique",
+      "fieldType": "Rubrique",
+      "fieldValues": "RUBRIQUE,NETTOYAGE,EVACUATION_EAUX,SANITAIRES,REFECTOIRES_HEBERGEMENT,DISPOSITIONS_DIVERSES,AMENAGEMENT_LOCAUX,AMBIANCES,ORGANISATION_RH,CHS,CONVENTION119,PROTECTION_MACHINES,DISPOSITIFS_PROTECTION,CONFORMITE,APPAREILS_LEVAGE,CABINES_MOYENS_ACCES,INSTALLATIONS_ELECTRIQUES,ECLAIRAGE_SECOURS,CABINE_PEINTURE_PULVIRISEE,AT,PRODUIT_CHIMIQUES,SERVICE_MEDICAL,DISPOSITIONS_COMMUNES,PREVENTION_CONTRE_INCENDIE,COVID,ENVIRONNEMENT,CODE_TRAVAIL"
+    },
+    {
+      "fieldName": "reference",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "num",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "exigence",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "applicable",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "conforme",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "observation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "origine",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "action",
+      "otherEntityRelationshipName": "obligationConformite",
+      "relationshipName": "action"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "obligationConformite",
+      "relationshipName": "delegue"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "processusSMI",
+      "otherEntityRelationshipName": "obligationConformite",
+      "relationshipName": "processus"
+    }
+  ],
+  "entityTableName": "obligation_conformite",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "searchEngine": "elasticsearch",
+  "changelogDate": "20210403121233"
+}

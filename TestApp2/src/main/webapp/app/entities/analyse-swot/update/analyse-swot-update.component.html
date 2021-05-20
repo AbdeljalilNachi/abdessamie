@@ -1,0 +1,130 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-analyse-swot-heading"
+        data-cy="AnalyseSWOTCreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.analyseSWOT.home.createOrEditLabel"
+      >
+        Create or edit a Analyse SWOT
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.dateIdentification" for="field_dateIdentification"
+            >Date Identification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateIdentification"
+              data-cy="dateIdentification"
+              type="text"
+              class="form-control"
+              name="dateIdentification"
+              ngbDatepicker
+              #dateIdentificationDp="ngbDatepicker"
+              formControlName="dateIdentification"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateIdentificationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.description" for="field_description"
+            >Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.pilote" for="field_pilote">Pilote</label>
+          <input type="text" class="form-control" name="pilote" id="field_pilote" data-cy="pilote" formControlName="pilote" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'newbetterflyApp.TypeAnalyseSWOT.null' | translate }}</option>
+            <option value="FORCE">{{ 'newbetterflyApp.TypeAnalyseSWOT.FORCE' | translate }}</option>
+            <option value="FAIBLESSE">{{ 'newbetterflyApp.TypeAnalyseSWOT.FAIBLESSE' | translate }}</option>
+            <option value="MENACE">{{ 'newbetterflyApp.TypeAnalyseSWOT.MENACE' | translate }}</option>
+            <option value="OPPORTUNITE">{{ 'newbetterflyApp.TypeAnalyseSWOT.OPPORTUNITE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.bu" for="field_bu">Bu</label>
+          <input type="text" class="form-control" name="bu" id="field_bu" data-cy="bu" formControlName="bu" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.commentaire" for="field_commentaire"
+            >Commentaire</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.afficher" for="field_afficher">Afficher</label>
+          <input type="checkbox" class="form-check" name="afficher" id="field_afficher" data-cy="afficher" formControlName="afficher" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSWOT.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

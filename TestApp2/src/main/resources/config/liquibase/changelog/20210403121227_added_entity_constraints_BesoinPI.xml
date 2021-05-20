@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity BesoinPI.
+    -->
+    <changeSet id="20210403121227-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="processus_id"
+                                 baseTableName="besoin_pi"
+                                 constraintName="fk_besoin_pi__processus_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="processus_smi"/>
+    </changeSet>
+</databaseChangeLog>

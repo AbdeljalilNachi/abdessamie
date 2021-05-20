@@ -1,0 +1,10 @@
+{
+  "newbetterflyApp": {
+    "Situation": {
+      "null": "",
+      "Normale": "Normale",
+      "Anormale": "Anormale",
+      "Urgence": "Urgence"
+    }
+  }
+}

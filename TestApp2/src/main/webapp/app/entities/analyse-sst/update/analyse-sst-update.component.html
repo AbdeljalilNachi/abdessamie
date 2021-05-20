@@ -1,0 +1,246 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-analyse-sst-heading"
+        data-cy="AnalyseSSTCreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.analyseSST.home.createOrEditLabel"
+      >
+        Create or edit a Analyse SST
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.buisnessUnit" for="field_buisnessUnit"
+            >Buisness Unit</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="buisnessUnit"
+            id="field_buisnessUnit"
+            data-cy="buisnessUnit"
+            formControlName="buisnessUnit"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.uniteTravail" for="field_uniteTravail"
+            >Unite Travail</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="uniteTravail"
+            id="field_uniteTravail"
+            data-cy="uniteTravail"
+            formControlName="uniteTravail"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.danger" for="field_danger">Danger</label>
+          <input type="text" class="form-control" name="danger" id="field_danger" data-cy="danger" formControlName="danger" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.risque" for="field_risque">Risque</label>
+          <input type="text" class="form-control" name="risque" id="field_risque" data-cy="risque" formControlName="risque" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.competence" for="field_competence">Competence</label>
+          <input
+            type="text"
+            class="form-control"
+            name="competence"
+            id="field_competence"
+            data-cy="competence"
+            formControlName="competence"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.situation" for="field_situation">Situation</label>
+          <select class="form-control" name="situation" formControlName="situation" id="field_situation" data-cy="situation">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Situation.null' | translate }}</option>
+            <option value="Normale">{{ 'newbetterflyApp.Situation.Normale' | translate }}</option>
+            <option value="Anormale">{{ 'newbetterflyApp.Situation.Anormale' | translate }}</option>
+            <option value="Urgence">{{ 'newbetterflyApp.Situation.Urgence' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.frequence" for="field_frequence">Frequence</label>
+          <select class="form-control" name="frequence" formControlName="frequence" id="field_frequence" data-cy="frequence">
+            <option [ngValue]="null">{{ 'newbetterflyApp.EnumFive.null' | translate }}</option>
+            <option value="ONE">{{ 'newbetterflyApp.EnumFive.ONE' | translate }}</option>
+            <option value="TWO">{{ 'newbetterflyApp.EnumFive.TWO' | translate }}</option>
+            <option value="THREE">{{ 'newbetterflyApp.EnumFive.THREE' | translate }}</option>
+            <option value="FOUR">{{ 'newbetterflyApp.EnumFive.FOUR' | translate }}</option>
+            <option value="FIVE">{{ 'newbetterflyApp.EnumFive.FIVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.dureeExposition" for="field_dureeExposition"
+            >Duree Exposition</label
+          >
+          <select
+            class="form-control"
+            name="dureeExposition"
+            formControlName="dureeExposition"
+            id="field_dureeExposition"
+            data-cy="dureeExposition"
+          >
+            <option [ngValue]="null">{{ 'newbetterflyApp.EnumFive.null' | translate }}</option>
+            <option value="ONE">{{ 'newbetterflyApp.EnumFive.ONE' | translate }}</option>
+            <option value="TWO">{{ 'newbetterflyApp.EnumFive.TWO' | translate }}</option>
+            <option value="THREE">{{ 'newbetterflyApp.EnumFive.THREE' | translate }}</option>
+            <option value="FOUR">{{ 'newbetterflyApp.EnumFive.FOUR' | translate }}</option>
+            <option value="FIVE">{{ 'newbetterflyApp.EnumFive.FIVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.coefficientMaitrise" for="field_coefficientMaitrise"
+            >Coefficient Maitrise</label
+          >
+          <select
+            class="form-control"
+            name="coefficientMaitrise"
+            formControlName="coefficientMaitrise"
+            id="field_coefficientMaitrise"
+            data-cy="coefficientMaitrise"
+          >
+            <option [ngValue]="null">{{ 'newbetterflyApp.EnumFive.null' | translate }}</option>
+            <option value="ONE">{{ 'newbetterflyApp.EnumFive.ONE' | translate }}</option>
+            <option value="TWO">{{ 'newbetterflyApp.EnumFive.TWO' | translate }}</option>
+            <option value="THREE">{{ 'newbetterflyApp.EnumFive.THREE' | translate }}</option>
+            <option value="FOUR">{{ 'newbetterflyApp.EnumFive.FOUR' | translate }}</option>
+            <option value="FIVE">{{ 'newbetterflyApp.EnumFive.FIVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.gravite" for="field_gravite">Gravite</label>
+          <select class="form-control" name="gravite" formControlName="gravite" id="field_gravite" data-cy="gravite">
+            <option [ngValue]="null">{{ 'newbetterflyApp.EnumFive.null' | translate }}</option>
+            <option value="ONE">{{ 'newbetterflyApp.EnumFive.ONE' | translate }}</option>
+            <option value="TWO">{{ 'newbetterflyApp.EnumFive.TWO' | translate }}</option>
+            <option value="THREE">{{ 'newbetterflyApp.EnumFive.THREE' | translate }}</option>
+            <option value="FOUR">{{ 'newbetterflyApp.EnumFive.FOUR' | translate }}</option>
+            <option value="FIVE">{{ 'newbetterflyApp.EnumFive.FIVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.criticite" for="field_criticite">Criticite</label>
+          <input type="number" class="form-control" name="criticite" id="field_criticite" data-cy="criticite" formControlName="criticite" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.maitriseExistante" for="field_maitriseExistante"
+            >Maitrise Existante</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="maitriseExistante"
+            id="field_maitriseExistante"
+            data-cy="maitriseExistante"
+            formControlName="maitriseExistante"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.origine" for="field_origine">Origine</label>
+          <input type="text" class="form-control" name="origine" id="field_origine" data-cy="origine" formControlName="origine" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.action" for="field_action">Action</label>
+          <select class="form-control" id="field_action" data-cy="action" name="action" formControlName="action">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="actionOption.id === editForm.get('action')!.value?.id ? editForm.get('action')!.value : actionOption"
+              *ngFor="let actionOption of actionsSharedCollection; trackBy: trackActionById"
+            >
+              {{ actionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.delegue" for="field_delegue">Delegue</label>
+          <select class="form-control" id="field_delegue" data-cy="delegue" name="delegue" formControlName="delegue">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('delegue')!.value?.id ? editForm.get('delegue')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.analyseSST.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

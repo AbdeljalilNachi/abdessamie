@@ -1,0 +1,174 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-document-heading" data-cy="DocumentCreateUpdateHeading" jhiTranslate="newbetterflyApp.document.home.createOrEditLabel">
+        Create or edit a Document
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.intitule" for="field_intitule">Intitule</label>
+          <input type="text" class="form-control" name="intitule" id="field_intitule" data-cy="intitule" formControlName="intitule" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.version" for="field_version">Version</label>
+          <input type="number" class="form-control" name="version" id="field_version" data-cy="version" formControlName="version" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'newbetterflyApp.TypeDocument.null' | translate }}</option>
+            <option value="PROECDURE">{{ 'newbetterflyApp.TypeDocument.PROECDURE' | translate }}</option>
+            <option value="INSTRUCTION">{{ 'newbetterflyApp.TypeDocument.INSTRUCTION' | translate }}</option>
+            <option value="ENREGISTREMENT">{{ 'newbetterflyApp.TypeDocument.ENREGISTREMENT' | translate }}</option>
+            <option value="MANUEL">{{ 'newbetterflyApp.TypeDocument.MANUEL' | translate }}</option>
+            <option value="POLITIQUE">{{ 'newbetterflyApp.TypeDocument.POLITIQUE' | translate }}</option>
+            <option value="AUTRES">{{ 'newbetterflyApp.TypeDocument.AUTRES' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.pieceJointe" for="field_pieceJointe">Piece Jointe</label>
+          <div>
+            <div *ngIf="editForm.get('pieceJointe')!.value" class="form-text text-danger clearfix">
+              <a
+                class="pull-left"
+                (click)="openFile(editForm.get('pieceJointe')!.value, editForm.get('pieceJointeContentType')!.value)"
+                jhiTranslate="entity.action.open"
+                >open</a
+              ><br />
+              <span class="pull-left"
+                >{{ editForm.get('pieceJointeContentType')!.value }}, {{ byteSize(editForm.get('pieceJointe')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="editForm.patchValue({ pieceJointe: null }); editForm.patchValue({ pieceJointeContentType: null })"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_pieceJointe"
+              data-cy="pieceJointe"
+              (change)="setFileData($event, 'pieceJointe', false)"
+              jhiTranslate="entity.action.addblob"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="pieceJointe"
+            id="field_pieceJointe"
+            data-cy="pieceJointe"
+            formControlName="pieceJointe"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="pieceJointeContentType"
+            id="field_pieceJointeContentType"
+            formControlName="pieceJointeContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.enApplication" for="field_enApplication"
+            >En Application</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="enApplication"
+            id="field_enApplication"
+            data-cy="enApplication"
+            formControlName="enApplication"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.appouve" for="field_appouve">Appouve</label>
+          <input type="checkbox" class="form-check" name="appouve" id="field_appouve" data-cy="appouve" formControlName="appouve" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.acces" for="field_acces">Acces</label>
+          <select class="form-control" id="field_acces" data-cy="acces" name="acces" formControlName="acces">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('acces')!.value?.id ? editForm.get('acces')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.document.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

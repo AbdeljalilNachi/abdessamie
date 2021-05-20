@@ -1,0 +1,121 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-objectif-heading" data-cy="ObjectifCreateUpdateHeading" jhiTranslate="newbetterflyApp.objectif.home.createOrEditLabel">
+        Create or edit a Objectif
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.axedelapolitiqueqse" for="field_axedelapolitiqueqse"
+            >Axedelapolitiqueqse</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="axedelapolitiqueqse"
+            id="field_axedelapolitiqueqse"
+            data-cy="axedelapolitiqueqse"
+            formControlName="axedelapolitiqueqse"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.objectifqse" for="field_objectifqse">Objectifqse</label>
+          <input
+            type="text"
+            class="form-control"
+            name="objectifqse"
+            id="field_objectifqse"
+            data-cy="objectifqse"
+            formControlName="objectifqse"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.origine" for="field_origine">Origine</label>
+          <input type="text" class="form-control" name="origine" id="field_origine" data-cy="origine" formControlName="origine" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.action" for="field_action">Action</label>
+          <select class="form-control" id="field_action" data-cy="action" name="action" formControlName="action">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="actionOption.id === editForm.get('action')!.value?.id ? editForm.get('action')!.value : actionOption"
+              *ngFor="let actionOption of actionsSharedCollection; trackBy: trackActionById"
+            >
+              {{ actionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.delegue" for="field_delegue">Delegue</label>
+          <select class="form-control" id="field_delegue" data-cy="delegue" name="delegue" formControlName="delegue">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('delegue')!.value?.id ? editForm.get('delegue')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.objectif.indicateur" for="field_indicateur">Indicateur</label>
+          <select class="form-control" id="field_indicateur" data-cy="indicateur" name="indicateur" formControlName="indicateur">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                indicateurSMIOption.id === editForm.get('indicateur')!.value?.id ? editForm.get('indicateur')!.value : indicateurSMIOption
+              "
+              *ngFor="let indicateurSMIOption of indicateurSMISSharedCollection; trackBy: trackIndicateurSMIById"
+            >
+              {{ indicateurSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

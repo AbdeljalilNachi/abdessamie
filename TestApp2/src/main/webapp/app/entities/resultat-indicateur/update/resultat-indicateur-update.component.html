@@ -1,0 +1,95 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-resultat-indicateur-heading"
+        data-cy="ResultatIndicateurCreateUpdateHeading"
+        jhiTranslate="newbetterflyApp.resultatIndicateur.home.createOrEditLabel"
+      >
+        Create or edit a Resultat Indicateur
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.resultatIndicateur.mois" for="field_mois">Mois</label>
+          <select class="form-control" name="mois" formControlName="mois" id="field_mois" data-cy="mois">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Mois.null' | translate }}</option>
+            <option value="JAN">{{ 'newbetterflyApp.Mois.JAN' | translate }}</option>
+            <option value="FEV">{{ 'newbetterflyApp.Mois.FEV' | translate }}</option>
+            <option value="MAR">{{ 'newbetterflyApp.Mois.MAR' | translate }}</option>
+            <option value="AVR">{{ 'newbetterflyApp.Mois.AVR' | translate }}</option>
+            <option value="MAI">{{ 'newbetterflyApp.Mois.MAI' | translate }}</option>
+            <option value="JUN">{{ 'newbetterflyApp.Mois.JUN' | translate }}</option>
+            <option value="JUL">{{ 'newbetterflyApp.Mois.JUL' | translate }}</option>
+            <option value="AUT">{{ 'newbetterflyApp.Mois.AUT' | translate }}</option>
+            <option value="SEP">{{ 'newbetterflyApp.Mois.SEP' | translate }}</option>
+            <option value="OCT">{{ 'newbetterflyApp.Mois.OCT' | translate }}</option>
+            <option value="NOV">{{ 'newbetterflyApp.Mois.NOV' | translate }}</option>
+            <option value="DEC">{{ 'newbetterflyApp.Mois.DEC' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.resultatIndicateur.cible" for="field_cible">Cible</label>
+          <input type="number" class="form-control" name="cible" id="field_cible" data-cy="cible" formControlName="cible" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.resultatIndicateur.resultat" for="field_resultat">Resultat</label>
+          <input type="number" class="form-control" name="resultat" id="field_resultat" data-cy="resultat" formControlName="resultat" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="newbetterflyApp.resultatIndicateur.resultIndicateurs"
+            for="field_resultIndicateurs"
+            >Result Indicateurs</label
+          >
+          <select
+            class="form-control"
+            id="field_resultIndicateurs"
+            data-cy="resultIndicateurs"
+            name="resultIndicateurs"
+            formControlName="resultIndicateurs"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                resultIndicateursOption.id === editForm.get('resultIndicateurs')!.value?.id
+                  ? editForm.get('resultIndicateurs')!.value
+                  : resultIndicateursOption
+              "
+              *ngFor="let resultIndicateursOption of resultIndicateursSharedCollection; trackBy: trackResultIndicateursById"
+            >
+              {{ resultIndicateursOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

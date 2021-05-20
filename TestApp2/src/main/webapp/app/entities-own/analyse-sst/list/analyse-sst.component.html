@@ -1,0 +1,197 @@
+<div>
+  <h2 id="page-heading" data-cy="AnalyseSSTHeading">
+    <span jhiTranslate="newbetterflyApp.analyseSST.home.title">Analyse SSTS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="newbetterflyApp.analyseSST.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-analyse-sst"
+        [routerLink]="['/analyse-sst/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span class="hidden-sm-down" jhiTranslate="newbetterflyApp.analyseSST.home.createLabel"> Create a new Analyse SST </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form name="searchForm" class="form-inline">
+        <div class="input-group w-100 mt-3">
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="currentSearch"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="{{ 'newbetterflyApp.analyseSST.home.search' | translate }}"
+          />
+
+          <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+            <fa-icon icon="search"></fa-icon>
+          </button>
+
+          <button class="input-group-append btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="analyseSSTS?.length === 0">
+    <span jhiTranslate="newbetterflyApp.analyseSST.home.notFound">No analyseSSTS found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="analyseSSTS && analyseSSTS.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="date">
+            <span jhiTranslate="newbetterflyApp.analyseSST.date">Date</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="buisnessUnit">
+            <span jhiTranslate="newbetterflyApp.analyseSST.buisnessUnit">Buisness Unit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="uniteTravail">
+            <span jhiTranslate="newbetterflyApp.analyseSST.uniteTravail">Unite Travail</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="danger">
+            <span jhiTranslate="newbetterflyApp.analyseSST.danger">Danger</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="risque">
+            <span jhiTranslate="newbetterflyApp.analyseSST.risque">Risque</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="competence">
+            <span jhiTranslate="newbetterflyApp.analyseSST.competence">Competence</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="situation">
+            <span jhiTranslate="newbetterflyApp.analyseSST.situation">Situation</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="frequence">
+            <span jhiTranslate="newbetterflyApp.analyseSST.frequence">Frequence</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="dureeExposition">
+            <span jhiTranslate="newbetterflyApp.analyseSST.dureeExposition">Duree Exposition</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="coefficientMaitrise">
+            <span jhiTranslate="newbetterflyApp.analyseSST.coefficientMaitrise">Coefficient Maitrise</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="gravite">
+            <span jhiTranslate="newbetterflyApp.analyseSST.gravite">Gravite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="criticite">
+            <span jhiTranslate="newbetterflyApp.analyseSST.criticite">Criticite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="maitriseExistante">
+            <span jhiTranslate="newbetterflyApp.analyseSST.maitriseExistante">Maitrise Existante</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="origine">
+            <span jhiTranslate="newbetterflyApp.analyseSST.origine">Origine</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="action.id">
+            <span jhiTranslate="newbetterflyApp.analyseSST.action">Action</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="delegue.id">
+            <span jhiTranslate="newbetterflyApp.analyseSST.delegue">Delegue</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="processus.id">
+            <span jhiTranslate="newbetterflyApp.analyseSST.processus">Processus</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let analyseSST of analyseSSTS; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/analyse-sst', analyseSST.id, 'view']">{{ analyseSST.id }}</a>
+          </td>
+          <td>{{ analyseSST.date | formatMediumDate }}</td>
+          <td>{{ analyseSST.buisnessUnit }}</td>
+          <td>{{ analyseSST.uniteTravail }}</td>
+          <td>{{ analyseSST.danger }}</td>
+          <td>{{ analyseSST.risque }}</td>
+          <td>{{ analyseSST.competence }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.Situation.' + analyseSST.situation }}">{{ analyseSST.situation }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.frequence }}">{{ analyseSST.frequence }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.dureeExposition }}">{{ analyseSST.dureeExposition }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.coefficientMaitrise }}">{{ analyseSST.coefficientMaitrise }}</td>
+          <td jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.gravite }}">{{ analyseSST.gravite }}</td>
+          <td>{{ analyseSST.criticite }}</td>
+          <td>{{ analyseSST.maitriseExistante }}</td>
+          <td>{{ analyseSST.origine }}</td>
+          <td>
+            <div *ngIf="analyseSST.action">
+              <a [routerLink]="['/action', analyseSST.action?.id, 'view']">{{ analyseSST.action?.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ analyseSST.delegue?.id }}
+          </td>
+          <td>
+            <div *ngIf="analyseSST.processus">
+              <a [routerLink]="['/processus-smi', analyseSST.processus?.id, 'view']">{{ analyseSST.processus?.id }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/analyse-sst', analyseSST.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/analyse-sst', analyseSST.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(analyseSST)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="analyseSSTS && analyseSSTS.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

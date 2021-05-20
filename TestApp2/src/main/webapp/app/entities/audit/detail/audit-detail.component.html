@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="audit">
+      <h2 data-cy="auditDetailsHeading"><span jhiTranslate="newbetterflyApp.audit.detail.title">Audit</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ audit.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.dateAudit">Date Audit</span></dt>
+        <dd>
+          <span>{{ audit.dateAudit | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.typeAudit">Type Audit</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.TypeAudit.' + audit.typeAudit }}">{{ audit.typeAudit }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.standard">Standard</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Standard.' + audit.standard }}">{{ audit.standard }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.iD">I D</span></dt>
+        <dd>
+          <span>{{ audit.iD }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.statut">Statut</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.StatutAudit.' + audit.statut }}">{{ audit.statut }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.conclusion">Conclusion</span></dt>
+        <dd>
+          <span>{{ audit.conclusion }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="audit.processus">
+            <a [routerLink]="['/processus-smi', audit.processus?.id, 'view']">{{ audit.processus?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.audit.auditeur">Auditeur</span></dt>
+        <dd>
+          <span>{{ audit.auditeur?.id }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/audit', audit.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

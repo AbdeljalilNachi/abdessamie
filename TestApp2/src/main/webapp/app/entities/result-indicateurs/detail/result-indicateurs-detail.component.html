@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="resultIndicateurs">
+      <h2 data-cy="resultIndicateursDetailsHeading">
+        <span jhiTranslate="newbetterflyApp.resultIndicateurs.detail.title">Result Indicateurs</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ resultIndicateurs.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.resultIndicateurs.annee">Annee</span></dt>
+        <dd>
+          <span>{{ resultIndicateurs.annee }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.resultIndicateurs.observation">Observation</span></dt>
+        <dd>
+          <span>{{ resultIndicateurs.observation }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.resultIndicateurs.indicateur">Indicateur</span></dt>
+        <dd>
+          <div *ngIf="resultIndicateurs.indicateur">
+            <a [routerLink]="['/indicateur-smi', resultIndicateurs.indicateur?.id, 'view']">{{ resultIndicateurs.indicateur?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/result-indicateurs', resultIndicateurs.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

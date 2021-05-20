@@ -1,0 +1,204 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-risque-heading" data-cy="RisqueCreateUpdateHeading" jhiTranslate="newbetterflyApp.risque.home.createOrEditLabel">
+        Create or edit a Risque
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.dateIdentification" for="field_dateIdentification"
+            >Date Identification</label
+          >
+          <div class="input-group">
+            <input
+              id="field_dateIdentification"
+              data-cy="dateIdentification"
+              type="text"
+              class="form-control"
+              name="dateIdentification"
+              ngbDatepicker
+              #dateIdentificationDp="ngbDatepicker"
+              formControlName="dateIdentification"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="dateIdentificationDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.causePotentielle" for="field_causePotentielle"
+            >Cause Potentielle</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="causePotentielle"
+            id="field_causePotentielle"
+            data-cy="causePotentielle"
+            formControlName="causePotentielle"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.effetPotentiel" for="field_effetPotentiel"
+            >Effet Potentiel</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="effetPotentiel"
+            id="field_effetPotentiel"
+            data-cy="effetPotentiel"
+            formControlName="effetPotentiel"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.type" for="field_type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'newbetterflyApp.TypeRisque.null' | translate }}</option>
+            <option value="MENACE">{{ 'newbetterflyApp.TypeRisque.MENACE' | translate }}</option>
+            <option value="OPPORTUNITE">{{ 'newbetterflyApp.TypeRisque.OPPORTUNITE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.gravite" for="field_gravite">Gravite</label>
+          <select class="form-control" name="gravite" formControlName="gravite" id="field_gravite" data-cy="gravite">
+            <option [ngValue]="null">{{ 'newbetterflyApp.EnumFive.null' | translate }}</option>
+            <option value="ONE">{{ 'newbetterflyApp.EnumFive.ONE' | translate }}</option>
+            <option value="TWO">{{ 'newbetterflyApp.EnumFive.TWO' | translate }}</option>
+            <option value="THREE">{{ 'newbetterflyApp.EnumFive.THREE' | translate }}</option>
+            <option value="FOUR">{{ 'newbetterflyApp.EnumFive.FOUR' | translate }}</option>
+            <option value="FIVE">{{ 'newbetterflyApp.EnumFive.FIVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.probabilite" for="field_probabilite">Probabilite</label>
+          <select class="form-control" name="probabilite" formControlName="probabilite" id="field_probabilite" data-cy="probabilite">
+            <option [ngValue]="null">{{ 'newbetterflyApp.EnumFive.null' | translate }}</option>
+            <option value="ONE">{{ 'newbetterflyApp.EnumFive.ONE' | translate }}</option>
+            <option value="TWO">{{ 'newbetterflyApp.EnumFive.TWO' | translate }}</option>
+            <option value="THREE">{{ 'newbetterflyApp.EnumFive.THREE' | translate }}</option>
+            <option value="FOUR">{{ 'newbetterflyApp.EnumFive.FOUR' | translate }}</option>
+            <option value="FIVE">{{ 'newbetterflyApp.EnumFive.FIVE' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.criticite" for="field_criticite">Criticite</label>
+          <input type="number" class="form-control" name="criticite" id="field_criticite" data-cy="criticite" formControlName="criticite" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.traitement" for="field_traitement">Traitement</label>
+          <select class="form-control" name="traitement" formControlName="traitement" id="field_traitement" data-cy="traitement">
+            <option [ngValue]="null">{{ 'newbetterflyApp.Traitement.null' | translate }}</option>
+            <option value="ACCEPTE">{{ 'newbetterflyApp.Traitement.ACCEPTE' | translate }}</option>
+            <option value="REFUSE">{{ 'newbetterflyApp.Traitement.REFUSE' | translate }}</option>
+            <option value="A_TRAITER">{{ 'newbetterflyApp.Traitement.A_TRAITER' | translate }}</option>
+            <option value="A_TRANSFERER">{{ 'newbetterflyApp.Traitement.A_TRANSFERER' | translate }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.commentaire" for="field_commentaire">Commentaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="commentaire"
+            id="field_commentaire"
+            data-cy="commentaire"
+            formControlName="commentaire"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.origine" for="field_origine">Origine</label>
+          <input type="text" class="form-control" name="origine" id="field_origine" data-cy="origine" formControlName="origine" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.action" for="field_action">Action</label>
+          <select class="form-control" id="field_action" data-cy="action" name="action" formControlName="action">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="actionOption.id === editForm.get('action')!.value?.id ? editForm.get('action')!.value : actionOption"
+              *ngFor="let actionOption of actionsSharedCollection; trackBy: trackActionById"
+            >
+              {{ actionOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.delegue" for="field_delegue">Delegue</label>
+          <select class="form-control" id="field_delegue" data-cy="delegue" name="delegue" formControlName="delegue">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('delegue')!.value?.id ? editForm.get('delegue')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="newbetterflyApp.risque.processus" for="field_processus">Processus</label>
+          <select class="form-control" id="field_processus" data-cy="processus" name="processus" formControlName="processus">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                processusSMIOption.id === editForm.get('processus')!.value?.id ? editForm.get('processus')!.value : processusSMIOption
+              "
+              *ngFor="let processusSMIOption of processusSMISSharedCollection; trackBy: trackProcessusSMIById"
+            >
+              {{ processusSMIOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+id;date_identification;pi_pertinentes;pertinente;prise_en_charge;afficher
+1;2021-04-03;Ruble quantify deposit;false;false;false
+2;2021-04-02;Electronics mint;false;true;false
+3;2021-04-03;Bike;true;true;true
+4;2021-04-03;Mouffetard;false;false;false
+5;2021-04-03;tan Ghana PCI;true;true;false
+6;2021-04-02;Metical Chips;false;true;true
+7;2021-04-02;azure;false;false;false
+8;2021-04-02;Table Gorgeous;false;false;false
+9;2021-04-03;Borders;true;true;true
+10;2021-04-02;Vanuatu;true;false;false

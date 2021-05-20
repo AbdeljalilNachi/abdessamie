@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="analyseSST">
+      <h2 data-cy="analyseSSTDetailsHeading"><span jhiTranslate="newbetterflyApp.analyseSST.detail.title">Analyse SST</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ analyseSST.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.date">Date</span></dt>
+        <dd>
+          <span>{{ analyseSST.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.buisnessUnit">Buisness Unit</span></dt>
+        <dd>
+          <span>{{ analyseSST.buisnessUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.uniteTravail">Unite Travail</span></dt>
+        <dd>
+          <span>{{ analyseSST.uniteTravail }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.danger">Danger</span></dt>
+        <dd>
+          <span>{{ analyseSST.danger }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.risque">Risque</span></dt>
+        <dd>
+          <span>{{ analyseSST.risque }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.competence">Competence</span></dt>
+        <dd>
+          <span>{{ analyseSST.competence }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.situation">Situation</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Situation.' + analyseSST.situation }}">{{ analyseSST.situation }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.frequence">Frequence</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.frequence }}">{{ analyseSST.frequence }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.dureeExposition">Duree Exposition</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.dureeExposition }}">{{ analyseSST.dureeExposition }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.coefficientMaitrise">Coefficient Maitrise</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.coefficientMaitrise }}">{{
+            analyseSST.coefficientMaitrise
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.gravite">Gravite</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseSST.gravite }}">{{ analyseSST.gravite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.criticite">Criticite</span></dt>
+        <dd>
+          <span>{{ analyseSST.criticite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.maitriseExistante">Maitrise Existante</span></dt>
+        <dd>
+          <span>{{ analyseSST.maitriseExistante }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.origine">Origine</span></dt>
+        <dd>
+          <span>{{ analyseSST.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.action">Action</span></dt>
+        <dd>
+          <div *ngIf="analyseSST.action">
+            <a [routerLink]="['/action', analyseSST.action?.id, 'view']">{{ analyseSST.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ analyseSST.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseSST.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="analyseSST.processus">
+            <a [routerLink]="['/processus-smi', analyseSST.processus?.id, 'view']">{{ analyseSST.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/analyse-sst', analyseSST.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

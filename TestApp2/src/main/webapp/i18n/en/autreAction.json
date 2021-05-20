@@ -1,0 +1,29 @@
+{
+  "newbetterflyApp": {
+    "autreAction": {
+      "home": {
+        "title": "Autre Actions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Autre Action",
+        "createOrEditLabel": "Create or edit a Autre Action",
+        "search": "Search for Autre Action",
+        "notFound": "No Autre Actions found"
+      },
+      "created": "A new Autre Action is created with identifier {{ param }}",
+      "updated": "A Autre Action is updated with identifier {{ param }}",
+      "deleted": "A Autre Action is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Autre Action {{ id }}?"
+      },
+      "detail": {
+        "title": "Autre Action"
+      },
+      "id": "ID",
+      "origineAction": "Origine Action",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus"
+    }
+  }
+}

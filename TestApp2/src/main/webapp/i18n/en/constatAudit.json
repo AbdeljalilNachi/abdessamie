@@ -1,0 +1,31 @@
+{
+  "newbetterflyApp": {
+    "constatAudit": {
+      "home": {
+        "title": "Constat Audits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Constat Audit",
+        "createOrEditLabel": "Create or edit a Constat Audit",
+        "search": "Search for Constat Audit",
+        "notFound": "No Constat Audits found"
+      },
+      "created": "A new Constat Audit is created with identifier {{ param }}",
+      "updated": "A Constat Audit is updated with identifier {{ param }}",
+      "deleted": "A Constat Audit is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Constat Audit {{ id }}?"
+      },
+      "detail": {
+        "title": "Constat Audit"
+      },
+      "id": "ID",
+      "type": "Type",
+      "constat": "Constat",
+      "origine": "Origine",
+      "action": "Action",
+      "delegue": "Delegue",
+      "processus": "Processus",
+      "audit": "Audit"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="analyseEnvirommentale">
+      <h2 data-cy="analyseEnvirommentaleDetailsHeading">
+        <span jhiTranslate="newbetterflyApp.analyseEnvirommentale.detail.title">Analyse Envirommentale</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.date">Date</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.businessUnit">Business Unit</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.businessUnit }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.activite">Activite</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.activite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.aspectEnvironnemental">Aspect Environnemental</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.aspectEnvironnemental }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.impactEnvironnemental">Impact Environnemental</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.impactEnvironnemental }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.competencesRequises">Competences Requises</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.competencesRequises }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.situation">Situation</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.Situation.' + analyseEnvirommentale.situation }}">{{
+            analyseEnvirommentale.situation
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.frequence">Frequence</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.frequence }}">{{
+            analyseEnvirommentale.frequence
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.sensibiliteMilieu">Sensibilite Milieu</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.sensibiliteMilieu }}">{{
+            analyseEnvirommentale.sensibiliteMilieu
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.coefficientMaitrise">Coefficient Maitrise</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.coefficientMaitrise }}">{{
+            analyseEnvirommentale.coefficientMaitrise
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.gravite">Gravite</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'newbetterflyApp.EnumFive.' + analyseEnvirommentale.gravite }}">{{ analyseEnvirommentale.gravite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.criticite">Criticite</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.criticite }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.maitriseExistante">Maitrise Existante</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.maitriseExistante }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.origine">Origine</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.origine }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.action">Action</span></dt>
+        <dd>
+          <div *ngIf="analyseEnvirommentale.action">
+            <a [routerLink]="['/action', analyseEnvirommentale.action?.id, 'view']">{{ analyseEnvirommentale.action?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.delegue">Delegue</span></dt>
+        <dd>
+          <span>{{ analyseEnvirommentale.delegue?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="newbetterflyApp.analyseEnvirommentale.processus">Processus</span></dt>
+        <dd>
+          <div *ngIf="analyseEnvirommentale.processus">
+            <a [routerLink]="['/processus-smi', analyseEnvirommentale.processus?.id, 'view']">{{ analyseEnvirommentale.processus?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/analyse-envirommentale', analyseEnvirommentale.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
