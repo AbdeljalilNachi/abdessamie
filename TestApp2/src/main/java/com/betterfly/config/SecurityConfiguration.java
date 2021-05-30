@@ -62,6 +62,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+    	
+    	String test = "default-src 'self'; frame-src 'self' frame-src http://localhost:5601; data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:";
+        
+    	// String test = "default-src 'self'; frame-src http://localhost:5601 data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:5601; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:";
+        
+    	
         // @formatter:off
         http
             .csrf()
@@ -72,7 +78,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .accessDeniedHandler(problemSupport)
         .and()
             .headers()
-            .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy())
+       //      .contentSecurityPolicy(jHipsterProperties.getSecurity().getContentSecurityPolicy())
+            .contentSecurityPolicy(test)
         .and()
             .referrerPolicy(ReferrerPolicyHeaderWriter.ReferrerPolicy.STRICT_ORIGIN_WHEN_CROSS_ORIGIN)
         .and()

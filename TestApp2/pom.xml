@@ -313,7 +313,7 @@
         </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
-
+	
     <build>
         <defaultGoal>spring-boot:run</defaultGoal>
         <plugins>
@@ -1098,9 +1098,23 @@
                                 </lifecycleMappingMetadata>
                             </configuration>
                         </plugin>
+                        <plugin>
+							      <artifactId>maven-assembly-plugin</artifactId>
+							      <configuration>
+							        <archive>
+							          <manifest>
+							            <mainClass>fully.qualified.MainClass</mainClass>
+							          </manifest>
+							        </archive>
+							        <descriptorRefs>
+							          <descriptorRef>jar-with-dependencies</descriptorRef>
+							        </descriptorRefs>
+							      </configuration>
+						</plugin>
                     </plugins>
                 </pluginManagement>
             </build>
+            
         </profile>
         <!-- jhipster-needle-maven-add-profile -->
     </profiles>

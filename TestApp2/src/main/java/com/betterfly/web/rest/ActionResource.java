@@ -197,8 +197,8 @@ public class ActionResource {
     public ResponseEntity<List<Action>> getAllActions(Pageable pageable) {
         log.debug("REST request to get a page of Actions");
         Page<Action> page = actionRepository.findAll(pageable);
-       for(Action action:page)
-          actionSearchRepository.save(action);
+       //for(Action action:page)
+       //   actionSearchRepository.save(action);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
